@@ -1,0 +1,6 @@
+framework module Pods_BitWallet {
+  umbrella header "Pods-BitWallet-umbrella.h"
+
+  export *
+  module * { export * }
+}

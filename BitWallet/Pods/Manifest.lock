@@ -1,0 +1,20 @@
+PODS:
+  - Nuke (9.2.0)
+  - SnapKit (5.0.1)
+
+DEPENDENCIES:
+  - Nuke (~> 9.2.0)
+  - SnapKit (~> 5.0.0)
+
+SPEC REPOS:
+  trunk:
+    - Nuke
+    - SnapKit
+
+SPEC CHECKSUMS:
+  Nuke: 1394e48b0940e01dd20f52ac56b121ab154e370d
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+
+PODFILE CHECKSUM: d9bd9209d8a380f7f7539e075cb8580cdafdb9e1
+
+COCOAPODS: 1.8.4

@@ -1,0 +1,7 @@
+platform :ios, '14.0'
+use_frameworks!
+
+target 'BitWallet' do
+  pod 'SnapKit', '~> 5.0.0'
+  pod 'Nuke', '~> 9.2.0'
+end
