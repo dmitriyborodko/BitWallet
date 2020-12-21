@@ -1,10 +1,3 @@
-//
-//  SceneDelegate.swift
-//  BitWallet
-//
-//  Created by Dmitrii Borodko on 12/17/20.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {

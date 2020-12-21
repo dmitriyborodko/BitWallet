@@ -1,16 +1,9 @@
-//
-//  Services.swift
-//  BitWallet
-//
-//  Created by Dmitrii Borodko on 12/17/20.
-//
-
 import Foundation
 
 enum Services {
 
     // MARK: - Interface
 
-    static let imageService: ImageService = .init()
-    static let masterdataService: MasterdataService = .init()
+    static let imageService: ImageService = DefaultImageService()
+    static let masterdataService: MasterdataService = DefaultMasterdataService()
 }

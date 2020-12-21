@@ -1,20 +1,32 @@
 PODS:
   - Nuke (9.2.0)
+  - PromiseKit (6.13.1):
+    - PromiseKit/CorePromise (= 6.13.1)
+    - PromiseKit/Foundation (= 6.13.1)
+    - PromiseKit/UIKit (= 6.13.1)
+  - PromiseKit/CorePromise (6.13.1)
+  - PromiseKit/Foundation (6.13.1):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (6.13.1):
+    - PromiseKit/CorePromise
   - SnapKit (5.0.1)
 
 DEPENDENCIES:
-  - Nuke (~> 9.2.0)
-  - SnapKit (~> 5.0.0)
+  - Nuke
+  - PromiseKit
+  - SnapKit
 
 SPEC REPOS:
   trunk:
     - Nuke
+    - PromiseKit
     - SnapKit
 
 SPEC CHECKSUMS:
   Nuke: 1394e48b0940e01dd20f52ac56b121ab154e370d
+  PromiseKit: 28fda91c973cc377875d8c0ea4f973013c05b6db
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: d9bd9209d8a380f7f7539e075cb8580cdafdb9e1
+PODFILE CHECKSUM: 813b58c7d4d19c915374d1ef216de97156b3d485
 
 COCOAPODS: 1.8.4
