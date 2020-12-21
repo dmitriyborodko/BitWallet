@@ -8,8 +8,6 @@ protocol MasterdataService {
 
 class DefaultMasterdataService: MasterdataService {
 
-    // MARK: - Interface
-
     enum Error: Swift.Error {
         case emptyMasterdata
         case decoding
@@ -46,8 +44,6 @@ class DefaultMasterdataService: MasterdataService {
             }
         }
     }
-
-    // MARK: - Implementation
 
     private let masterdataDataStore: MasterdataDataStore
 }
