@@ -7,5 +7,4 @@ protocol ImageService {
 
 class DefaultImageService: ImageService {
 
-
 }

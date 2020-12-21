@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B5B43DC2591304B00DBAFD7 /* MasterdataDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5B43DB2591304B00DBAFD7 /* MasterdataDTO.swift */; };
+		0B5B43E42591324C00DBAFD7 /* CryptocoinDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5B43E32591324C00DBAFD7 /* CryptocoinDTO.swift */; };
+		0B5B43EA259135F000DBAFD7 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5B43E9259135F000DBAFD7 /* ImageModel.swift */; };
+		0B5B43F22591377100DBAFD7 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5B43F12591377100DBAFD7 /* Theme.swift */; };
+		0B5B43F725913AB500DBAFD7 /* MasterdataDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5B43F625913AB500DBAFD7 /* MasterdataDataStore.swift */; };
+		0B5B440025913BCA00DBAFD7 /* Masterdata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5B43FF25913BCA00DBAFD7 /* Masterdata.swift */; };
+		0B5B440A259141C700DBAFD7 /* Cryptocoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5B4409259141C700DBAFD7 /* Cryptocoin.swift */; };
 		0BA8B268258B61E100CAB670 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA8B267258B61E100CAB670 /* AppDelegate.swift */; };
 		0BA8B26A258B61E100CAB670 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA8B269258B61E100CAB670 /* SceneDelegate.swift */; };
 		0BA8B271258B61E300CAB670 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BA8B270258B61E300CAB670 /* Assets.xcassets */; };
@@ -41,6 +48,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B5B43DB2591304B00DBAFD7 /* MasterdataDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterdataDTO.swift; sourceTree = "<group>"; };
+		0B5B43E32591324C00DBAFD7 /* CryptocoinDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptocoinDTO.swift; sourceTree = "<group>"; };
+		0B5B43E9259135F000DBAFD7 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
+		0B5B43F12591377100DBAFD7 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		0B5B43F625913AB500DBAFD7 /* MasterdataDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterdataDataStore.swift; sourceTree = "<group>"; };
+		0B5B43FF25913BCA00DBAFD7 /* Masterdata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Masterdata.swift; sourceTree = "<group>"; };
+		0B5B4409259141C700DBAFD7 /* Cryptocoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cryptocoin.swift; sourceTree = "<group>"; };
 		0BA8B264258B61E100CAB670 /* BitWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BA8B267258B61E100CAB670 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BA8B269258B61E100CAB670 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +105,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B5B43E8259135B400DBAFD7 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				0B5B43E32591324C00DBAFD7 /* CryptocoinDTO.swift */,
+				0B5B4409259141C700DBAFD7 /* Cryptocoin.swift */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		0B5B440425913BFC00DBAFD7 /* Masterdata */ = {
+			isa = PBXGroup;
+			children = (
+				0BEB8D85258B82A5007BB460 /* MasterdataService.swift */,
+				0B5B43F625913AB500DBAFD7 /* MasterdataDataStore.swift */,
+			);
+			path = Masterdata;
+			sourceTree = "<group>";
+		};
+		0B5B44082591418900DBAFD7 /* Masterdata */ = {
+			isa = PBXGroup;
+			children = (
+				0B5B43DB2591304B00DBAFD7 /* MasterdataDTO.swift */,
+				0B5B43FF25913BCA00DBAFD7 /* Masterdata.swift */,
+			);
+			path = Masterdata;
+			sourceTree = "<group>";
+		};
 		0BA8B25B258B61E100CAB670 = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +200,9 @@
 		0BA8B2A3258B65EA00CAB670 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0B5B43E8259135B400DBAFD7 /* Assets */,
+				0B5B44082591418900DBAFD7 /* Masterdata */,
+				0B5B43E9259135F000DBAFD7 /* ImageModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -167,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				0BEB8D5A258B7AD0007BB460 /* Colors.swift */,
+				0B5B43F12591377100DBAFD7 /* Theme.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -201,7 +246,7 @@
 			children = (
 				0BEB8D6C258B81DC007BB460 /* ImageService.swift */,
 				0BEB8D74258B81E5007BB460 /* Services.swift */,
-				0BEB8D85258B82A5007BB460 /* MasterdataService.swift */,
+				0B5B440425913BFC00DBAFD7 /* Masterdata */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -397,10 +442,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BA8B2A7258B6C7600CAB670 /* Coordinator.swift in Sources */,
+				0B5B43DC2591304B00DBAFD7 /* MasterdataDTO.swift in Sources */,
+				0B5B43E42591324C00DBAFD7 /* CryptocoinDTO.swift in Sources */,
+				0B5B43F725913AB500DBAFD7 /* MasterdataDataStore.swift in Sources */,
 				0BEB8D5B258B7AD0007BB460 /* Colors.swift in Sources */,
+				0B5B43F22591377100DBAFD7 /* Theme.swift in Sources */,
 				0BEB8D86258B82A5007BB460 /* MasterdataService.swift in Sources */,
 				0BA8B268258B61E100CAB670 /* AppDelegate.swift in Sources */,
 				0BA8B26A258B61E100CAB670 /* SceneDelegate.swift in Sources */,
+				0B5B440A259141C700DBAFD7 /* Cryptocoin.swift in Sources */,
+				0B5B43EA259135F000DBAFD7 /* ImageModel.swift in Sources */,
+				0B5B440025913BCA00DBAFD7 /* Masterdata.swift in Sources */,
 				0BA8B2BA258B730A00CAB670 /* AssetsVC.swift in Sources */,
 				0BEB8D75258B81E5007BB460 /* Services.swift in Sources */,
 				0BA8B2BF258B731200CAB670 /* WalletsVC.swift in Sources */,
