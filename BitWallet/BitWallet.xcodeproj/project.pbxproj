@@ -14,6 +14,7 @@
 		0B5B43F725913AB500DBAFD7 /* MasterdataDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5B43F625913AB500DBAFD7 /* MasterdataDataStore.swift */; };
 		0B5B440025913BCA00DBAFD7 /* Masterdata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5B43FF25913BCA00DBAFD7 /* Masterdata.swift */; };
 		0B5B440A259141C700DBAFD7 /* Cryptocoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5B4409259141C700DBAFD7 /* Cryptocoin.swift */; };
+		0B5B4426259146E200DBAFD7 /* Mastrerdata.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B5B4425259146E200DBAFD7 /* Mastrerdata.json */; };
 		0BA8B268258B61E100CAB670 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA8B267258B61E100CAB670 /* AppDelegate.swift */; };
 		0BA8B26A258B61E100CAB670 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA8B269258B61E100CAB670 /* SceneDelegate.swift */; };
 		0BA8B271258B61E300CAB670 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BA8B270258B61E300CAB670 /* Assets.xcassets */; };
@@ -55,6 +56,7 @@
 		0B5B43F625913AB500DBAFD7 /* MasterdataDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterdataDataStore.swift; sourceTree = "<group>"; };
 		0B5B43FF25913BCA00DBAFD7 /* Masterdata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Masterdata.swift; sourceTree = "<group>"; };
 		0B5B4409259141C700DBAFD7 /* Cryptocoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cryptocoin.swift; sourceTree = "<group>"; };
+		0B5B4425259146E200DBAFD7 /* Mastrerdata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Mastrerdata.json; sourceTree = "<group>"; };
 		0BA8B264258B61E100CAB670 /* BitWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BA8B267258B61E100CAB670 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BA8B269258B61E100CAB670 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +134,16 @@
 			path = Masterdata;
 			sourceTree = "<group>";
 		};
+		0B5B4424259146B500DBAFD7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0B5B4425259146E200DBAFD7 /* Mastrerdata.json */,
+				0BA8B272258B61E300CAB670 /* LaunchScreen.storyboard */,
+				0BA8B270258B61E300CAB670 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		0BA8B25B258B61E100CAB670 = {
 			isa = PBXGroup;
 			children = (
@@ -157,13 +169,12 @@
 		0BA8B266258B61E100CAB670 /* BitWallet */ = {
 			isa = PBXGroup;
 			children = (
+				0B5B4424259146B500DBAFD7 /* Resources */,
 				0BEB8D6B258B81C4007BB460 /* Services */,
 				0BA8B2A4258B65F500CAB670 /* Utils */,
 				0BA8B2A3258B65EA00CAB670 /* Models */,
 				0BA8B2A2258B65E600CAB670 /* UI */,
 				0BA8B267258B61E100CAB670 /* AppDelegate.swift */,
-				0BA8B270258B61E300CAB670 /* Assets.xcassets */,
-				0BA8B272258B61E300CAB670 /* LaunchScreen.storyboard */,
 				0BA8B275258B61E300CAB670 /* Info.plist */,
 			);
 			path = BitWallet;
@@ -332,6 +343,9 @@
 		0BA8B25C258B61E100CAB670 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					New,
+				);
 				LastSwiftUpdateCheck = 1230;
 				LastUpgradeCheck = 1230;
 				TargetAttributes = {
@@ -375,6 +389,7 @@
 			files = (
 				0BA8B274258B61E300CAB670 /* LaunchScreen.storyboard in Resources */,
 				0BA8B271258B61E300CAB670 /* Assets.xcassets in Resources */,
+				0B5B4426259146E200DBAFD7 /* Mastrerdata.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
