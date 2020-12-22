@@ -23,7 +23,9 @@ class AssetsVC: UIViewController {
     private lazy var titleSegmentedControl: UISegmentedControl = self.makeTitleSegmentedControl()
     private lazy var tableView: UITableView = .init()
 
-    private var state: State = .loading
+    private var state: State = .loading {
+        didSet { tableView.reloadData() }
+    }
     private var selectedSegment: Segment { Segment(rawValue: titleSegmentedControl.selectedSegmentIndex) ?? .all }
 
     private var assetsService: AssetsService
@@ -65,6 +67,7 @@ class AssetsVC: UIViewController {
     private func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.backgroundColor = .clear
 
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
@@ -85,15 +88,26 @@ class AssetsVC: UIViewController {
     }
 
     private func applyLoadingState() {
-        
+
     }
 
     private func apply(assets: Assets) {
-
+        state = .presenting(assets: assets)
     }
 
     private func apply(error: Error) {
+        guard let error = error as? DefaultMasterdataService.Error else {
+            state = .error(description: "Unknown error appeared")
+            return
+        }
 
+        switch error {
+        case .emptyMasterdata:
+            state = .error(description: "No masterdata found")
+
+        case .decoding:
+            state = .error(description: "Masterdata was corrupted")
+        }
     }
 }
 
@@ -133,10 +147,28 @@ extension AssetsVC: UITableViewDataSource {
             return tableView.registerAndDequeueReusableCell() as LoadingCell
 
         case .presenting(let assets):
-            return tableView.registerAndDequeueReusableCell() as AssetCell
+            guard let asset = selectedSegment.asset(with: assets, indexPath: indexPath) else { return .init() }
+
+            let cell = tableView.registerAndDequeueReusableCell() as AssetCell
+            configureAssetCell(cell, with: asset)
+            return cell
 
         case .error(let error):
-            return tableView.registerAndDequeueReusableCell() as ErrorCell
+            let cell = tableView.registerAndDequeueReusableCell() as ErrorCell
+            cell.title = error
+            return cell
+        }
+    }
+
+    private func configureAssetCell(_ cell: AssetCell, with asset: AssetUnit) {
+        switch asset {
+        case let asset as Cryptocoin:
+            cell.name = asset.name
+            cell.price = asset.averagePrice
+
+            imageService.fetch(asset.logo?.url, for: cell.imageTarget,  placeholder: #imageLiteral(resourceName: "camera"))
+
+        default: break
         }
     }
 }
@@ -162,7 +194,7 @@ private enum Segment: Int, CustomStringConvertible, CaseIterable {
             return "All"
 
         case .cryptocoins:
-            return "Cryptocoins"
+            return "Crypto"
 
         case .metals:
             return "Metals"
@@ -195,6 +227,22 @@ private enum Segment: Int, CustomStringConvertible, CaseIterable {
 
         default:
             return 0
+        }
+    }
+
+    func asset(with assets: Assets, indexPath: IndexPath) -> AssetUnit? {
+        switch (self, indexPath.section) {
+        case (.all, 0), (.cryptocoins, 0):
+            return assets.cryptocoins[safe: indexPath.row]
+
+        case (.all, 1), (.metals, 0):
+            return nil
+
+        case (.all, 2), (.fiats, 0):
+            return nil
+
+        default:
+            return nil
         }
     }
 }

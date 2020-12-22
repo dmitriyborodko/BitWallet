@@ -2,8 +2,6 @@ import UIKit
 
 class AssetCell: UITableViewCell, Reusable {
 
-    var iconTarget: ImageTarget { .init(imageView: iconImageView, size: Constants.iconImageViewSize) }
-
     var name: String? {
         get { nameLabel.text }
         set { nameLabel.text = newValue }
@@ -14,6 +12,8 @@ class AssetCell: UITableViewCell, Reusable {
         set { priceLabel.text = newValue }
     }
 
+    var imageTarget: ImageTarget { ImageTarget(imageView: iconImageView, size: Constants.iconImageViewSize) }
+
     private lazy var overlayView: UIView = .init()
     private lazy var iconImageView: UIImageView = .init()
     private lazy var nameLabel: UILabel = .init()
@@ -22,11 +22,12 @@ class AssetCell: UITableViewCell, Reusable {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        selectionStyle = .none
         backgroundColor = .clear
 
         configureOverlayView()
         configureIconImageView()
+        configureNameLabel()
+        configurePriceLabel()
     }
 
     @available(*, unavailable)
@@ -35,6 +36,7 @@ class AssetCell: UITableViewCell, Reusable {
     }
 
     private func configureOverlayView() {
+        overlayView.backgroundColor = .lightGray
         overlayView.layer.cornerCurve = .continuous
         overlayView.layer.cornerRadius = Constants.overlayViewCornerRadius
         addSubview(overlayView)
@@ -46,18 +48,37 @@ class AssetCell: UITableViewCell, Reusable {
     private func configureIconImageView() {
         iconImageView.layer.cornerRadius = Constants.iconImageViewSize.width / 2
         overlayView.addSubview(iconImageView)
-        overlayView.snp.makeConstraints { make in
+        iconImageView.snp.makeConstraints { make in
             make.left.top.bottom.equalToSuperview().inset(Constants.iconImageViewLeftTopBottomInset)
             make.size.equalTo(Constants.iconImageViewSize)
+        }
+    }
+
+    private func configureNameLabel() {
+        overlayView.addSubview(nameLabel)
+        nameLabel.snp.makeConstraints { make in
+            make.left.equalTo(iconImageView.snp.right).offset(Constants.nameLabelLeftOffset)
+            make.centerY.equalTo(iconImageView.snp.centerY).offset(-Constants.iconImageViewSize.height / 4)
+        }
+    }
+
+    private func configurePriceLabel() {
+        overlayView.addSubview(priceLabel)
+        priceLabel.snp.makeConstraints { make in
+            make.left.equalTo(iconImageView.snp.right).offset(Constants.nameLabelLeftOffset)
+            make.centerY.equalTo(iconImageView.snp.centerY).offset(Constants.iconImageViewSize.height / 4)
         }
     }
 }
 
 private enum Constants {
 
-    static var overlayViewCornerRadius: CGFloat = 4.0
+    static var overlayViewCornerRadius: CGFloat = 16.0
     static var overlayViewEdgeInsets: UIEdgeInsets = .init(top: 8.0, left: 8.0, bottom: 8.0, right: 8.0)
 
     static var iconImageViewLeftTopBottomInset: CGFloat = 8.0
     static var iconImageViewSize = CGSize(width: 50, height: 50)
+
+    static var nameLabelLeftOffset: CGFloat = 8.0
+    static var nameToPriceLabelsSpacing: CGFloat = 4.0
 }

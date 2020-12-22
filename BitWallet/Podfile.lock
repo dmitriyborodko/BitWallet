@@ -1,4 +1,7 @@
 PODS:
+  - CocoaLumberjack (3.7.0):
+    - CocoaLumberjack/Core (= 3.7.0)
+  - CocoaLumberjack/Core (3.7.0)
   - Nuke (9.2.0)
   - PromiseKit (6.13.1):
     - PromiseKit/CorePromise (= 6.13.1)
@@ -10,23 +13,30 @@ PODS:
   - PromiseKit/UIKit (6.13.1):
     - PromiseKit/CorePromise
   - SnapKit (5.0.1)
+  - SVGKit (2.1.1):
+    - CocoaLumberjack (~> 3.0)
 
 DEPENDENCIES:
   - Nuke
   - PromiseKit
   - SnapKit
+  - SVGKit
 
 SPEC REPOS:
   trunk:
+    - CocoaLumberjack
     - Nuke
     - PromiseKit
     - SnapKit
+    - SVGKit
 
 SPEC CHECKSUMS:
+  CocoaLumberjack: e8955b9d337ac307103b0a34fd141c32f27e53c5
   Nuke: 1394e48b0940e01dd20f52ac56b121ab154e370d
   PromiseKit: 28fda91c973cc377875d8c0ea4f973013c05b6db
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  SVGKit: 652cdf7bef8bec8564d04a8511d3ab50c7595fac
 
-PODFILE CHECKSUM: 813b58c7d4d19c915374d1ef216de97156b3d485
+PODFILE CHECKSUM: a9eaa52b078ac4b56b387bae56153e5cb35bfbd4
 
 COCOAPODS: 1.8.4

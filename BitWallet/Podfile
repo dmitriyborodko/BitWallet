@@ -5,4 +5,5 @@ target 'BitWallet' do
   pod 'SnapKit'
   pod 'PromiseKit'
   pod 'Nuke'
+  pod 'SVGKit'
 end
