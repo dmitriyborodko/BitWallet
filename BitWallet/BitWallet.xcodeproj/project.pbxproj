@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B1C95E42592080400FC3518 /* AssetUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C95E32592080400FC3518 /* AssetUnit.swift */; };
+		0B1C95E925920DD000FC3518 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C95E825920DD000FC3518 /* Assets.swift */; };
+		0B1C95F1259215FF00FC3518 /* AssetsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C95F0259215FF00FC3518 /* AssetsService.swift */; };
+		0B1C95F62592288700FC3518 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C95F52592288700FC3518 /* Reusable.swift */; };
+		0B1C95FE25922A3800FC3518 /* AssetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C95FD25922A3800FC3518 /* AssetCell.swift */; };
+		0B1C960325922A7F00FC3518 /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C960225922A7F00FC3518 /* LoadingCell.swift */; };
+		0B1C960825922A8B00FC3518 /* ErrorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C960725922A8B00FC3518 /* ErrorCell.swift */; };
+		0B1C960D2592390000FC3518 /* ImageTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C960C2592390000FC3518 /* ImageTarget.swift */; };
 		0B5B43DC2591304B00DBAFD7 /* MasterdataDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5B43DB2591304B00DBAFD7 /* MasterdataDTO.swift */; };
 		0B5B43E42591324C00DBAFD7 /* CryptocoinDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5B43E32591324C00DBAFD7 /* CryptocoinDTO.swift */; };
 		0B5B43EA259135F000DBAFD7 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5B43E9259135F000DBAFD7 /* ImageModel.swift */; };
@@ -49,6 +57,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B1C95E32592080400FC3518 /* AssetUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetUnit.swift; sourceTree = "<group>"; };
+		0B1C95E825920DD000FC3518 /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		0B1C95F0259215FF00FC3518 /* AssetsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsService.swift; sourceTree = "<group>"; };
+		0B1C95F52592288700FC3518 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		0B1C95FD25922A3800FC3518 /* AssetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCell.swift; sourceTree = "<group>"; };
+		0B1C960225922A7F00FC3518 /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
+		0B1C960725922A8B00FC3518 /* ErrorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCell.swift; sourceTree = "<group>"; };
+		0B1C960C2592390000FC3518 /* ImageTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTarget.swift; sourceTree = "<group>"; };
 		0B5B43DB2591304B00DBAFD7 /* MasterdataDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterdataDTO.swift; sourceTree = "<group>"; };
 		0B5B43E32591324C00DBAFD7 /* CryptocoinDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptocoinDTO.swift; sourceTree = "<group>"; };
 		0B5B43E9259135F000DBAFD7 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
@@ -112,6 +128,8 @@
 			children = (
 				0B5B43E32591324C00DBAFD7 /* CryptocoinDTO.swift */,
 				0B5B4409259141C700DBAFD7 /* Cryptocoin.swift */,
+				0B1C95E32592080400FC3518 /* AssetUnit.swift */,
+				0B1C95E825920DD000FC3518 /* Assets.swift */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -204,6 +222,8 @@
 				0BA8B2AF258B6D6100CAB670 /* Wallets */,
 				0BA8B2AE258B6D2F00CAB670 /* Assets */,
 				0BA8B2A5258B6BA800CAB670 /* Routing */,
+				0B1C960225922A7F00FC3518 /* LoadingCell.swift */,
+				0B1C960725922A8B00FC3518 /* ErrorCell.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -223,6 +243,8 @@
 			children = (
 				0BEB8D5A258B7AD0007BB460 /* Colors.swift */,
 				0B5B43F12591377100DBAFD7 /* Theme.swift */,
+				0B1C95F52592288700FC3518 /* Reusable.swift */,
+				0B1C960C2592390000FC3518 /* ImageTarget.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -240,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				0BA8B2B9258B730A00CAB670 /* AssetsVC.swift */,
+				0B1C95FD25922A3800FC3518 /* AssetCell.swift */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -258,6 +281,7 @@
 				0BEB8D6C258B81DC007BB460 /* ImageService.swift */,
 				0BEB8D74258B81E5007BB460 /* Services.swift */,
 				0B5B440425913BFC00DBAFD7 /* Masterdata */,
+				0B1C95F0259215FF00FC3518 /* AssetsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -456,19 +480,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B1C95FE25922A3800FC3518 /* AssetCell.swift in Sources */,
 				0BA8B2A7258B6C7600CAB670 /* Coordinator.swift in Sources */,
 				0B5B43DC2591304B00DBAFD7 /* MasterdataDTO.swift in Sources */,
 				0B5B43E42591324C00DBAFD7 /* CryptocoinDTO.swift in Sources */,
 				0B5B43F725913AB500DBAFD7 /* MasterdataDataStore.swift in Sources */,
 				0BEB8D5B258B7AD0007BB460 /* Colors.swift in Sources */,
+				0B1C960D2592390000FC3518 /* ImageTarget.swift in Sources */,
 				0B5B43F22591377100DBAFD7 /* Theme.swift in Sources */,
 				0BEB8D86258B82A5007BB460 /* MasterdataService.swift in Sources */,
 				0BA8B268258B61E100CAB670 /* AppDelegate.swift in Sources */,
+				0B1C960825922A8B00FC3518 /* ErrorCell.swift in Sources */,
+				0B1C95E925920DD000FC3518 /* Assets.swift in Sources */,
 				0BA8B26A258B61E100CAB670 /* SceneDelegate.swift in Sources */,
 				0B5B440A259141C700DBAFD7 /* Cryptocoin.swift in Sources */,
 				0B5B43EA259135F000DBAFD7 /* ImageModel.swift in Sources */,
+				0B1C95E42592080400FC3518 /* AssetUnit.swift in Sources */,
+				0B1C960325922A7F00FC3518 /* LoadingCell.swift in Sources */,
 				0B5B440025913BCA00DBAFD7 /* Masterdata.swift in Sources */,
+				0B1C95F1259215FF00FC3518 /* AssetsService.swift in Sources */,
 				0BA8B2BA258B730A00CAB670 /* AssetsVC.swift in Sources */,
+				0B1C95F62592288700FC3518 /* Reusable.swift in Sources */,
 				0BEB8D75258B81E5007BB460 /* Services.swift in Sources */,
 				0BA8B2BF258B731200CAB670 /* WalletsVC.swift in Sources */,
 				0BEB8D6D258B81DC007BB460 /* ImageService.swift in Sources */,

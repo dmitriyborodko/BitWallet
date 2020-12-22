@@ -8,6 +8,8 @@ protocol MasterdataService {
 
 class DefaultMasterdataService: MasterdataService {
 
+    // MARK: - Interface
+
     enum Error: Swift.Error {
         case emptyMasterdata
         case decoding
@@ -18,8 +20,14 @@ class DefaultMasterdataService: MasterdataService {
     }
 
     func fetchMasterdata() -> Promise<Masterdata> {
-        return Promise { seal in
+        if let masterdataPromise = masterdataPromise {
+            return masterdataPromise
+        }
+
+        let promise: Promise<Masterdata> = Promise { seal in
             DispatchQueue.main.async { [unowned self] in
+                defer { self.masterdataPromise = nil }
+
                 if let masterdata = self.masterdataDataStore.restoreMasterdata() {
                     seal.fulfill(masterdata)
                     return
@@ -43,7 +51,14 @@ class DefaultMasterdataService: MasterdataService {
                 }
             }
         }
+
+        masterdataPromise = promise
+
+        return promise
     }
 
+    // MARK: - Implementation
+
+    private var masterdataPromise: Promise<Masterdata>?
     private let masterdataDataStore: MasterdataDataStore
 }

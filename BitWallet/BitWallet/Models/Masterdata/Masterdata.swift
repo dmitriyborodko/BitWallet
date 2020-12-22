@@ -2,12 +2,12 @@ import Foundation
 
 struct Masterdata {
 
-    let cryptocoins: [Cryptocoin]
+    let assets: Assets
 }
 
 extension Masterdata {
 
     init(withDTO dto: MasterdataDTO) {
-        self.cryptocoins = dto.data.attributes.cryptocoins.map(Cryptocoin.init)
+        self.assets = Assets(withDTO: dto.data.attributes)
     }
 }

@@ -1,6 +1,8 @@
 import Foundation
 
-struct Cryptocoin {
+struct Cryptocoin: AssetUnit {
+
+    let type: AssetType = .cryptocoin
 
     let id: String
     let symbol: String
