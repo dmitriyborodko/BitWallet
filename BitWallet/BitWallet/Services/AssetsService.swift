@@ -3,23 +3,24 @@ import PromiseKit
 
 protocol AssetsService {
 
-    func fetchAssets() -> Promise<Assets>
+    func fetchAssets() -> Promise<AssetGroups>
 }
 
 class DefaultAssetsService: AssetsService {
 
-    // MARK: - Interface
+    private let masterdataService: MasterdataService
+    private var assetsPromise: Promise<AssetGroups>?
 
     init(masterdataService: MasterdataService = Services.masterdataService) {
         self.masterdataService = masterdataService
     }
 
-    func fetchAssets() -> Promise<Assets> {
+    func fetchAssets() -> Promise<AssetGroups> {
         if let assetsPromise = assetsPromise {
             return assetsPromise
         }
 
-        let promise: Promise<Assets> = firstly {
+        let promise: Promise<AssetGroups> = firstly {
             masterdataService.fetchMasterdata()
         }.map { [unowned self] masterdata in
             assetsPromise = nil
@@ -30,9 +31,4 @@ class DefaultAssetsService: AssetsService {
 
         return promise
     }
-
-    // MARK: - Implementation
-
-    private let masterdataService: MasterdataService
-    private var assetsPromise: Promise<Assets>?
 }

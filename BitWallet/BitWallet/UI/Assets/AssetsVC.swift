@@ -4,29 +4,15 @@ import SnapKit
 
 class AssetsVC: UIViewController {
 
-    // MARK: - Interface
-    
-    override func loadView() {
-        view = UIView()
-
-        configureUI()
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        loadAssets()
-    }
-
-    // MARK: - Implementation
-
     private lazy var titleSegmentedControl: UISegmentedControl = self.makeTitleSegmentedControl()
     private lazy var tableView: UITableView = .init()
 
     private var state: State = .loading {
         didSet { reloadTableView() }
     }
-    private var selectedSegment: Segment { Segment(rawValue: titleSegmentedControl.selectedSegmentIndex) ?? .all }
+    private var selectedAssetType: AssetType {
+        AssetType(rawValue: titleSegmentedControl.selectedSegmentIndex) ?? .default
+    }
 
     private var assetsService: AssetsService
     private var imageService: ImageService
@@ -43,6 +29,18 @@ class AssetsVC: UIViewController {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func loadView() {
+        view = UIView()
+
+        configureUI()
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        loadAssets()
     }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -67,11 +65,15 @@ class AssetsVC: UIViewController {
     private func makeTitleSegmentedControl() -> UISegmentedControl {
         let segmentedControl = UISegmentedControl()
 
-        for segment in Segment.allCases {
-            segmentedControl.insertSegment(withTitle: segment.description, at: segment.rawValue, animated: false)
+        for (index, type) in AssetType.allCases.enumerated() {
+            segmentedControl.insertSegment(
+                withTitle: AssetGroups.segmentTitle(for: type),
+                at: index,
+                animated: false
+            )
         }
 
-        segmentedControl.selectedSegmentIndex = Segment.all.rawValue
+        segmentedControl.selectedSegmentIndex = AssetType.default.rawValue
 
         segmentedControl.addTarget(
             self,
@@ -83,7 +85,6 @@ class AssetsVC: UIViewController {
     }
 
     private func configureTableView() {
-        tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = .clear
         tableView.allowsSelection = false
@@ -117,10 +118,10 @@ class AssetsVC: UIViewController {
     }
 
     private func applyLoadingState() {
-
+        state = .loading
     }
 
-    private func apply(assets: Assets) {
+    private func apply(assets: AssetGroups) {
         state = .presenting(assets: assets)
     }
 
@@ -144,26 +145,13 @@ class AssetsVC: UIViewController {
 
 extension AssetsVC: UITableViewDataSource {
 
-    func numberOfSections(in tableView: UITableView) -> Int {
-        switch state {
-        case .loading:
-            return 1
-
-        case .presenting:
-            return selectedSegment.numberOfSections
-
-        case .error:
-            return 1
-        }
-    }
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch state {
         case .loading:
             return 1
 
-        case .presenting(let assets):
-            return selectedSegment.numberOfAssets(inSection: section, assets: assets)
+        case .presenting(let assetGroups):
+            return assetGroups.assets(for: selectedAssetType)?.count ?? 0
 
         case .error:
             return 1
@@ -175,8 +163,10 @@ extension AssetsVC: UITableViewDataSource {
         case .loading:
             return tableView.registerAndDequeueReusableCell() as LoadingCell
 
-        case .presenting(let assets):
-            guard let asset = selectedSegment.asset(with: assets, indexPath: indexPath) else { return .init() }
+        case .presenting(let assetGroups):
+            guard
+                let asset = assetGroups.assets(for: selectedAssetType)?[safe: indexPath.row]
+            else { return .init() }
 
             let cell = tableView.registerAndDequeueReusableCell() as AssetCell
             configureAssetCell(cell, with: asset)
@@ -189,7 +179,7 @@ extension AssetsVC: UITableViewDataSource {
         }
     }
 
-    private func configureAssetCell(_ cell: AssetCell, with asset: AssetUnit) {
+    private func configureAssetCell(_ cell: AssetCell, with asset: Asset) {
         switch asset {
         case let asset as Cryptocoin:
             cell.name = asset.name
@@ -214,103 +204,33 @@ extension AssetsVC: UITableViewDataSource {
     }
 }
 
-// MARK: - UITableViewDataSource
+private extension AssetGroups {
 
-extension AssetsVC: UITableViewDelegate {
+    static var count: Int { 3 }
 
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        switch state {
-        case .loading, .error:
-            return nil
-
-        case .presenting:
-            let header = tableView.registerAndDequeueReusableHeaderFooterView() as AssetHeaderView
-            header.title = selectedSegment.headerTitle(forSection: section)
-            return header
-        }
-    }
-}
-
-// MARK: -
-
-private enum Segment: Int, CustomStringConvertible, CaseIterable {
-
-    case all = 0
-    case cryptocoins
-    case metals
-    case fiats
-
-    var description: String {
-        switch self {
-        case .all:
-            return "All"
-
-        case .cryptocoins:
+    static func segmentTitle(for assetType: AssetType) -> String {
+        switch assetType {
+        case .cryptocoin:
             return "Crypto"
 
-        case .metals:
+        case .commodity:
             return "Metals"
 
-        case .fiats:
+        case .fiat:
             return "Fiats"
         }
     }
 
-    var numberOfSections: Int {
-        switch self {
-        case .all:
-            return 3
+    func assets(for assetType: AssetType) -> [Asset]? {
+        switch assetType {
+        case .cryptocoin:
+            return cryptocoins
 
-        case .cryptocoins, .metals, .fiats:
-            return 1
-        }
-    }
+        case .commodity:
+            return commodities
 
-    func numberOfAssets(inSection section: Int, assets: Assets) -> Int {
-        switch (self, section) {
-        case (.all, 0), (.cryptocoins, 0):
-            return assets.cryptocoins.count
-
-        case (.all, 1), (.metals, 0):
-            return assets.commodities.count
-
-        case (.all, 2), (.fiats, 0):
-            return assets.fiats.count
-
-        default:
-            return 0
-        }
-    }
-
-    func asset(with assets: Assets, indexPath: IndexPath) -> AssetUnit? {
-        switch (self, indexPath.section) {
-        case (.all, 0), (.cryptocoins, 0):
-            return assets.cryptocoins[safe: indexPath.row]
-
-        case (.all, 1), (.metals, 0):
-            return assets.commodities[safe: indexPath.row]
-
-        case (.all, 2), (.fiats, 0):
-            return assets.fiats[safe: indexPath.row]
-
-        default:
-            return nil
-        }
-    }
-
-    func headerTitle(forSection section: Int) -> String? {
-        switch (self, section) {
-        case (.all, 0), (.cryptocoins, 0):
-            return "Cryptocoins"
-
-        case (.all, 1), (.metals, 0):
-            return "Metals"
-
-        case (.all, 2), (.fiats, 0):
-            return "Fiats"
-
-        default:
-            return nil
+        case .fiat:
+            return fiats
         }
     }
 }
@@ -318,7 +238,7 @@ private enum Segment: Int, CustomStringConvertible, CaseIterable {
 private enum State {
 
     case loading
-    case presenting(assets: Assets)
+    case presenting(assets: AssetGroups)
     case error(description: String)
 }
 

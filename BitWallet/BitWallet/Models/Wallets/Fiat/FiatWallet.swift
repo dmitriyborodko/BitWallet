@@ -2,6 +2,8 @@ import Foundation
 
 struct FiatWallet: Wallet {
 
+    let type: WalletType = .fiat
+
     let name: String
     let fiatSymbol: String
     let balance: String?

@@ -1,15 +1,13 @@
 import Foundation
 
-struct Assets {
-
-    let groupsCount: Int = 3
+struct AssetGroups {
 
     let cryptocoins: [Cryptocoin]
     let commodities: [Commodity]
     let fiats: [Fiat]
 }
 
-extension Assets {
+extension AssetGroups {
 
     init(withDTO dto: MasterdataAtttributesDTO) {
         self.cryptocoins = dto.cryptocoins.map(Cryptocoin.init)

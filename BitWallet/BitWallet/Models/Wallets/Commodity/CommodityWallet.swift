@@ -2,6 +2,8 @@ import Foundation
 
 struct CommodityWallet: Wallet {
 
+    let type: WalletType = .commodity
+
     let name: String
     let cryptocoinSymbol: String
     let balance: String?

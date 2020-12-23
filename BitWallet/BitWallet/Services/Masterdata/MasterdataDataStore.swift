@@ -8,7 +8,7 @@ protocol MasterdataDataStore {
 
 class DefaultMasterdataDataStore: MasterdataDataStore {
 
-    // MARK: - Interface
+    private var masterdata: Masterdata?
 
     func storeMasterdata(_ masterdata: Masterdata) {
         self.masterdata = masterdata
@@ -17,8 +17,4 @@ class DefaultMasterdataDataStore: MasterdataDataStore {
     func restoreMasterdata() -> Masterdata? {
         return masterdata
     }
-
-    // MARK: - Implementation
-
-    private var masterdata: Masterdata?
 }

@@ -2,21 +2,17 @@ import UIKit
 
 class Coordinator {
 
-    // MARK: - Interface
-
     var rootVC: UIViewController { tabBarController }
-
-    init() {
-        configureUI()
-    }
-
-    // MARK: - Implementation
 
     private let tabBarController = UITabBarController()
     private let assetsNavigationController = UINavigationController()
     private let assetsVC = AssetsVC()
     private let walletsNavigationController = UINavigationController()
     private let walletsVC = WalletsVC()
+
+    init() {
+        configureUI()
+    }
 
     private func configureUI() {
         assetsNavigationController.tabBarItem = UITabBarItem(title: "Assets", image: #imageLiteral(resourceName: "dolar"), tag: Constants.assetsVCTag)

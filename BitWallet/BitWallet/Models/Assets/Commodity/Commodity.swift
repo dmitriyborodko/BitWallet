@@ -1,6 +1,6 @@
 import Foundation
 
-struct Commodity: AssetUnit {
+struct Commodity: Asset {
 
     let type: AssetType = .commodity
 

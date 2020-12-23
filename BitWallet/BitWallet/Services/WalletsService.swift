@@ -8,7 +8,8 @@ protocol WalletsService {
 
 class DefaultWalletsService: WalletsService {
 
-    // MARK: - Interface
+    private let masterdataService: MasterdataService
+    private var walletsPromise: Promise<WalletGroups>?
 
     init(masterdataService: MasterdataService = Services.masterdataService) {
         self.masterdataService = masterdataService
@@ -28,9 +29,4 @@ class DefaultWalletsService: WalletsService {
 
         return promise
     }
-
-    // MARK: - Implementation
-
-    private let masterdataService: MasterdataService
-    private var walletsPromise: Promise<WalletGroups>?
 }

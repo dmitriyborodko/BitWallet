@@ -1,8 +1,7 @@
 import Foundation
 
+/// Much more handy to use a DI here, but I just didn't want to add it :-)
 enum Services {
-
-    // MARK: - Interface
 
     static let imageService: ImageService = DefaultImageService()
 

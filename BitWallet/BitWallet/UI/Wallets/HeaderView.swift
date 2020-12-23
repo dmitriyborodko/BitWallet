@@ -1,6 +1,6 @@
 import UIKit
 
-class AssetHeaderView: UITableViewHeaderFooterView, Reusable {
+class HeaderView: UITableViewHeaderFooterView, Reusable {
 
     var title: String? {
         get { titleLabel.text }

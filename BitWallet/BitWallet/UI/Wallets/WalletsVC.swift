@@ -4,22 +4,6 @@ import SnapKit
 
 class WalletsVC: UIViewController {
 
-    // MARK: - Interface
-
-    override func loadView() {
-        view = UIView()
-
-        configureUI()
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        loadWalletGroups()
-    }
-
-    // MARK: - Implementation
-
     private lazy var tableView: UITableView = .init()
 
     private var state: State = .loading {
@@ -41,6 +25,18 @@ class WalletsVC: UIViewController {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func loadView() {
+        view = UIView()
+
+        configureUI()
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        loadWalletGroups()
     }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -93,7 +89,7 @@ class WalletsVC: UIViewController {
     }
 
     private func applyLoadingState() {
-
+        state = .loading
     }
 
     private func apply(walletGroups: WalletGroups) {
@@ -125,8 +121,8 @@ extension WalletsVC: UITableViewDataSource {
         case .loading:
             return 1
 
-        case .presenting(let walletGroups):
-            return walletGroups.count
+        case .presenting:
+            return WalletGroups.count
 
         case .error:
             return 1
@@ -139,7 +135,7 @@ extension WalletsVC: UITableViewDataSource {
             return 1
 
         case .presenting(let walletGroups):
-            return walletGroups.wallets(forSection: section)?.count ?? 0
+            return WalletType(rawValue: section).flatMap(walletGroups.wallets)?.count ?? 0
 
         case .error:
             return 1
@@ -153,7 +149,8 @@ extension WalletsVC: UITableViewDataSource {
 
         case .presenting(let walletGroups):
             guard
-                let wallet = walletGroups.wallets(forSection: indexPath.section)?[safe: indexPath.row]
+                let type = WalletType(rawValue: indexPath.section),
+                let wallet = walletGroups.wallets(for: type)[safe: indexPath.row]
             else { return .init() }
 
             let cell = tableView.registerAndDequeueReusableCell() as WalletCell
@@ -196,6 +193,8 @@ extension WalletsVC: UITableViewDataSource {
     }
 }
 
+// MARK: - UITableViewDelegate
+
 extension WalletsVC: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -204,8 +203,8 @@ extension WalletsVC: UITableViewDelegate {
             return nil
 
         case .presenting(let walletGroups):
-            let header = tableView.registerAndDequeueReusableHeaderFooterView() as AssetHeaderView
-            header.title = walletGroups.headerTitle(forSection: section)
+            let header = tableView.registerAndDequeueReusableHeaderFooterView() as HeaderView
+            header.title = WalletType(rawValue: section).flatMap(walletGroups.headerTitle)
             return header
         }
     }
@@ -222,37 +221,31 @@ private enum State {
 
 private extension WalletGroups {
 
-    var count: Int { 3 }
+    static var count: Int { 3 }
 
-    func wallets(forSection section: Int) -> [Wallet]? {
-        switch section {
-        case 0:
+    func wallets(for type: WalletType) -> [Wallet] {
+        switch type {
+        case .cryptocoin:
             return cryptocoinWallets
 
-        case 1:
+        case .commodity:
             return commodityWallets
 
-        case 2:
+        case .fiat:
             return fiatWallets
-
-        default:
-            return nil
         }
     }
 
-    func headerTitle(forSection section: Int) -> String? {
-        switch section {
-        case 0:
+    func headerTitle(for type: WalletType) -> String {
+        switch type {
+        case .cryptocoin:
             return "Cryptocoin Wallets"
 
-        case 1:
+        case .commodity:
             return "Commodity Wallets"
 
-        case 2:
+        case .fiat:
             return "Fiat Wallets"
-
-        default:
-            return nil
         }
     }
 }

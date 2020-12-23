@@ -8,12 +8,13 @@ protocol MasterdataService {
 
 class DefaultMasterdataService: MasterdataService {
 
-    // MARK: - Interface
-
     enum Error: Swift.Error {
         case emptyMasterdata
         case decoding
     }
+
+    private var masterdataPromise: Promise<Masterdata>?
+    private let masterdataDataStore: MasterdataDataStore
 
     init(masterdataDataStore: MasterdataDataStore = Services.masterdataDataStore) {
         self.masterdataDataStore = masterdataDataStore
@@ -56,9 +57,4 @@ class DefaultMasterdataService: MasterdataService {
 
         return promise
     }
-
-    // MARK: - Implementation
-
-    private var masterdataPromise: Promise<Masterdata>?
-    private let masterdataDataStore: MasterdataDataStore
 }
