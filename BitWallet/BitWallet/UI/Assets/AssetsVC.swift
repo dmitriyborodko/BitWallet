@@ -109,9 +109,9 @@ class AssetsVC: UIViewController {
         applyLoadingState()
 
         firstly {
-            assetsService.fetchAssets()
-        }.done { [weak self] assets in
-            self?.apply(assets: assets)
+            assetsService.fetchAssetGroups()
+        }.done { [weak self] assetGroups in
+            self?.apply(assetGroups: assetGroups)
         }.catch { [weak self] error in
             self?.apply(error: error)
         }
@@ -121,8 +121,8 @@ class AssetsVC: UIViewController {
         state = .loading
     }
 
-    private func apply(assets: AssetGroups) {
-        state = .presenting(assets: assets)
+    private func apply(assetGroups: AssetGroups) {
+        state = .presenting(assetGroups: assetGroups)
     }
 
     private func apply(error: Error) {
@@ -238,7 +238,7 @@ private extension AssetGroups {
 private enum State {
 
     case loading
-    case presenting(assets: AssetGroups)
+    case presenting(assetGroups: AssetGroups)
     case error(description: String)
 }
 

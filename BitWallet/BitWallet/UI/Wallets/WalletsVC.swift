@@ -80,7 +80,7 @@ class WalletsVC: UIViewController {
         applyLoadingState()
 
         firstly {
-            walletsService.fetchWallets()
+            walletsService.fetchWalletGroups()
         }.done { [weak self] walletGroups in
             self?.apply(walletGroups: walletGroups)
         }.catch { [weak self] error in

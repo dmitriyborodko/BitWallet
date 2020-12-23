@@ -1,7 +1,7 @@
 import UIKit
 import Nuke
 
-/// Tried SwiftSVG also, but it rendered images badly
+/// Tried SwiftSVG also, but it rendered images poorly
 import SVGKit
 
 protocol ImageService {

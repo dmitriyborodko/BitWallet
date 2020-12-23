@@ -3,7 +3,7 @@ import PromiseKit
 
 protocol AssetsService {
 
-    func fetchAssets() -> Promise<AssetGroups>
+    func fetchAssetGroups() -> Promise<AssetGroups>
 }
 
 class DefaultAssetsService: AssetsService {
@@ -15,7 +15,7 @@ class DefaultAssetsService: AssetsService {
         self.masterdataService = masterdataService
     }
 
-    func fetchAssets() -> Promise<AssetGroups> {
+    func fetchAssetGroups() -> Promise<AssetGroups> {
         if let assetsPromise = assetsPromise {
             return assetsPromise
         }

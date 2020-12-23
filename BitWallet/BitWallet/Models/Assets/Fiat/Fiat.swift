@@ -12,7 +12,9 @@ struct Fiat: Asset {
 
 extension Fiat {
 
-    init(withDTO dto: FiatDTO) {
+    init?(withDTO dto: FiatDTO) {
+        guard dto.attributes.hasWallets else { return nil }
+
         self.symbol = dto.attributes.symbol
         self.name = dto.attributes.name
 
