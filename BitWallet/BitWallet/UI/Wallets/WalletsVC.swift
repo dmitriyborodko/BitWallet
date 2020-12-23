@@ -179,7 +179,7 @@ extension WalletsVC: UITableViewDataSource {
         }
     }
 
-    private func configureWalletCell(_ cell: WalletCell, with wallet: WalletUnit) {
+    private func configureWalletCell(_ cell: WalletCell, with wallet: Wallet) {
         switch wallet {
         case let wallet as CryptocoinWallet:
             cell.name = wallet.name
@@ -305,7 +305,7 @@ private extension WalletGroups {
 
     var count: Int { 3 }
 
-    func wallets(forSection section: Int) -> [WalletUnit]? {
+    func wallets(forSection section: Int) -> [Wallet]? {
         switch section {
         case 0:
             return cryptocoinWallets

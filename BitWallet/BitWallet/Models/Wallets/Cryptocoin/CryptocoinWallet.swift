@@ -1,6 +1,6 @@
 import Foundation
 
-struct CryptocoinWallet: WalletUnit {
+struct CryptocoinWallet: Wallet {
 
     let name: String
     let cryptocoinSymbol: String
@@ -17,7 +17,7 @@ extension CryptocoinWallet {
         self.balance = PriceFormatter.format(
             price: dto.attributes.balance,
             precision: cryptocoinAttributesDTO?.precisionForCoins,
-            currencySymbol: cryptocoinAttributesDTO?.precisionForCoins
+            currencySymbol: cryptocoinAttributesDTO?.symbol
         )
 
         self.icon = ImageModel(

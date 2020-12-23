@@ -10,7 +10,6 @@ struct PriceFormatter {
     }()
 
     static func format(price priceString: String, precision: Int?, currencySymbol: String? = "€") -> String? {
-        let precision = precision ?? priceString.split(separator: ".").last?.count
         return Double(priceString).flatMap { format(price: $0, precision: precision, currencySymbol: currencySymbol) }
     }
 
