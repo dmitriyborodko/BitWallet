@@ -17,6 +17,11 @@ class WalletCell: UITableViewCell, Reusable {
         set { balanceLabel.text = newValue }
     }
 
+    var isDefault: Bool {
+        get { overlayView.backgroundColor == .lightGray }
+        set { overlayView.backgroundColor = newValue ? .systemGreen : .lightGray }
+    }
+
     var imageTarget: ImageTarget { ImageTarget(imageView: iconImageView, size: Constants.iconImageViewSize) }
 
     private lazy var overlayView: UIView = .init()
@@ -48,6 +53,7 @@ class WalletCell: UITableViewCell, Reusable {
         name = nil
         symbol = nil
         balance = nil
+        isDefault = false
     }
 
     private func configureOverlayView() {
@@ -100,7 +106,7 @@ class WalletCell: UITableViewCell, Reusable {
 private enum Constants {
 
     static let overlayViewCornerRadius: CGFloat = 16.0
-    static let overlayViewEdgeInsets: UIEdgeInsets = .init(top: 0.0, left: 8.0, bottom: 8.0, right: 8.0)
+    static let overlayViewEdgeInsets: UIEdgeInsets = .init(top: 4.0, left: 0.0, bottom: 4.0, right: 0.0)
 
     static let contentRightInset: CGFloat = 8.0
 

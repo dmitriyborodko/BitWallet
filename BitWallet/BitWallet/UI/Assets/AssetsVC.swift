@@ -5,7 +5,7 @@ import SnapKit
 class AssetsVC: UIViewController {
 
     private lazy var titleSegmentedControl: UISegmentedControl = self.makeTitleSegmentedControl()
-    private lazy var tableView: UITableView = .init()
+    private lazy var tableView: UITableView = .init(frame: .zero, style: .insetGrouped)
 
     private var state: State = .loading {
         didSet { reloadTableView() }
@@ -56,7 +56,7 @@ class AssetsVC: UIViewController {
     }
 
     private func configureUI() {
-        view.backgroundColor = .systemTeal
+        view.backgroundColor = .systemBackground
         navigationItem.titleView = titleSegmentedControl
 
         configureTableView()

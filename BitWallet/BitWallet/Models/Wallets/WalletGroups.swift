@@ -19,7 +19,7 @@ extension WalletGroups {
                         .attributes
                 )
             }
-            .filter { $0.isDeleted }
+            .filter { !$0.isDeleted }
             .sorted(by: { PriceFormatter.comparePrices(left: $0.balance, right: $1.balance) })
 
         self.commodityWallets = dto.commodityWallets
@@ -31,7 +31,7 @@ extension WalletGroups {
                         .attributes
                 )
             }
-            .filter { $0.isDeleted }
+            .filter { !$0.isDeleted }
             .sorted(by: { PriceFormatter.comparePrices(left: $0.balance, right: $1.balance) })
 
         self.fiatWallets = dto.fiatWallets

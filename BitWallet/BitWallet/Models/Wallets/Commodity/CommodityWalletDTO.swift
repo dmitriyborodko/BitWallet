@@ -16,6 +16,7 @@ struct CommodityWalletAttributesDTO: Decodable {
         /// 🐞
         case cryptocoinID = "cryptocoin_id"
         case isDeleted = "deleted"
+        case isDefault = "is_default"
     }
 
     let name: String
@@ -23,4 +24,5 @@ struct CommodityWalletAttributesDTO: Decodable {
     let balance: String
     let cryptocoinID: String
     let isDeleted: Bool
+    let isDefault: Bool
 }

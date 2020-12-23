@@ -4,7 +4,7 @@ import SnapKit
 
 class WalletsVC: UIViewController {
 
-    private lazy var tableView: UITableView = .init()
+    private lazy var tableView: UITableView = .init(frame: .zero, style: .insetGrouped)
 
     private var state: State = .loading {
         didSet { reloadTableView() }
@@ -48,7 +48,7 @@ class WalletsVC: UIViewController {
     }
 
     private func configureUI() {
-        view.backgroundColor = .systemIndigo
+        view.backgroundColor = .systemBackground
         navigationItem.title = "What a rich boy!"
 
         configureTableView()
@@ -170,6 +170,7 @@ extension WalletsVC: UITableViewDataSource {
             cell.name = wallet.name
             cell.symbol = wallet.cryptocoinSymbol
             cell.balance = wallet.formattedBalance
+            cell.isDefault = wallet.isDefault
 
             imageService.fetch(wallet.icon?.url, for: cell.imageTarget, placeholder: #imageLiteral(resourceName: "camera"))
 
@@ -177,6 +178,7 @@ extension WalletsVC: UITableViewDataSource {
             cell.name = wallet.name
             cell.symbol = wallet.cryptocoinSymbol
             cell.balance = wallet.formattedBalance
+            cell.isDefault = wallet.isDefault
 
             imageService.fetch(wallet.icon?.url, for: cell.imageTarget, placeholder: #imageLiteral(resourceName: "camera"))
 
@@ -239,13 +241,13 @@ private extension WalletGroups {
     func headerTitle(for type: WalletType) -> String {
         switch type {
         case .cryptocoin:
-            return "Cryptocoin Wallets"
+            return "Crypto Wallets"
 
         case .commodity:
-            return "Commodity Wallets"
+            return "Metals Wallets"
 
         case .fiat:
-            return "Fiat Wallets"
+            return "Fiats Wallets"
         }
     }
 }
