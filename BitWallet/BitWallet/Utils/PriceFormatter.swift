@@ -10,16 +10,23 @@ struct PriceFormatter {
     }()
 
     static func format(price priceString: String, precision: Int?, currencySymbol: String? = "€") -> String? {
-        return Double(priceString).flatMap { format(price: $0, precision: precision, currencySymbol: currencySymbol) }
+        return format(price: Double(priceString), precision: precision, currencySymbol: currencySymbol)
     }
 
-    static func format(price: Double, precision: Int?, currencySymbol: String? = "€") -> String? {
+    static func format(price: Double?, precision: Int?, currencySymbol: String? = "€") -> String? {
         currencyFormatter.locale = Locale.current
         currencyFormatter.currencySymbol = currencySymbol
 
         currencyFormatter.minimumFractionDigits = precision ?? 0
         currencyFormatter.maximumFractionDigits = precision ?? Int.max
 
-        return currencyFormatter.string(from: NSNumber(value: price))
+        return price.flatMap { currencyFormatter.string(from: NSNumber(value: $0)) }
+    }
+
+    static func comparePrices(left: Double?, right: Double?) -> Bool {
+        guard let left = left else { return false }
+        guard let right = right else { return true }
+
+        return left > right
     }
 }

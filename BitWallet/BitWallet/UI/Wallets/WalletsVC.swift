@@ -169,21 +169,21 @@ extension WalletsVC: UITableViewDataSource {
         case let wallet as CryptocoinWallet:
             cell.name = wallet.name
             cell.symbol = wallet.cryptocoinSymbol
-            cell.balance = wallet.balance
+            cell.balance = wallet.formattedBalance
 
             imageService.fetch(wallet.icon?.url, for: cell.imageTarget, placeholder: #imageLiteral(resourceName: "camera"))
 
         case let wallet as CommodityWallet:
             cell.name = wallet.name
             cell.symbol = wallet.cryptocoinSymbol
-            cell.balance = wallet.balance
+            cell.balance = wallet.formattedBalance
 
             imageService.fetch(wallet.icon?.url, for: cell.imageTarget, placeholder: #imageLiteral(resourceName: "camera"))
 
         case let wallet as FiatWallet:
             cell.name = wallet.name
             cell.symbol = wallet.fiatSymbol
-            cell.balance = wallet.balance
+            cell.balance = wallet.formattedBalance
 
             imageService.fetch(wallet.icon?.url, for: cell.imageTarget, placeholder: #imageLiteral(resourceName: "camera"))
 

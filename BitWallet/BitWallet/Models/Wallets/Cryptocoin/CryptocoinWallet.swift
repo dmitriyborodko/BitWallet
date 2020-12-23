@@ -6,8 +6,10 @@ struct CryptocoinWallet: Wallet {
 
     let name: String
     let cryptocoinSymbol: String
-    let balance: String?
+    let formattedBalance: String?
     let icon: ImageModel?
+
+    let balance: Double?
 }
 
 extension CryptocoinWallet {
@@ -16,8 +18,11 @@ extension CryptocoinWallet {
         self.name = dto.attributes.name
         self.cryptocoinSymbol = dto.attributes.cryptocoinSymbol
 
-        self.balance = PriceFormatter.format(
-            price: dto.attributes.balance,
+        let balance = Double(dto.attributes.balance)
+        self.balance = balance
+
+        self.formattedBalance = PriceFormatter.format(
+            price: balance,
             precision: cryptocoinAttributesDTO?.precisionForCoins,
             currencySymbol: cryptocoinAttributesDTO?.symbol
         )

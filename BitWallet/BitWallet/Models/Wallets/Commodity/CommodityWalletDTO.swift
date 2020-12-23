@@ -12,6 +12,8 @@ struct CommodityWalletAttributesDTO: Decodable {
         case name
         case cryptocoinSymbol = "cryptocoin_symbol"
         case balance
+
+        /// 🐞
         case cryptocoinID = "cryptocoin_id"
     }
 

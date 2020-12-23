@@ -6,8 +6,10 @@ struct FiatWallet: Wallet {
 
     let name: String
     let fiatSymbol: String
-    let balance: String?
+    let formattedBalance: String?
     let icon: ImageModel?
+
+    let balance: Double?
 }
 
 extension FiatWallet {
@@ -16,8 +18,11 @@ extension FiatWallet {
         self.name = dto.attributes.name
         self.fiatSymbol = dto.attributes.fiatSymbol
 
-        self.balance = PriceFormatter.format(
-            price: dto.attributes.balance,
+        let balance = Double(dto.attributes.balance)
+        self.balance = balance
+
+        self.formattedBalance = PriceFormatter.format(
+            price: balance,
             precision: fiatAttributesDTO?.precision,
             currencySymbol: fiatAttributesDTO?.symbol
         )
