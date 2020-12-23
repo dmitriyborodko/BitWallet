@@ -1,8 +1,8 @@
 import Foundation
 
-struct Cryptocoin: AssetUnit {
+struct Commodity: AssetUnit {
 
-    let type: AssetType = .cryptocoin
+    let type: AssetType = .commodity
 
     let symbol: String
     let name: String
@@ -10,9 +10,9 @@ struct Cryptocoin: AssetUnit {
     let logo: ImageModel?
 }
 
-extension Cryptocoin {
+extension Commodity {
 
-    init(withDTO dto: CryptocoinDTO) {
+    init(withDTO dto: CommodityDTO) {
         self.symbol = dto.attributes.symbol
         self.name = dto.attributes.name
 

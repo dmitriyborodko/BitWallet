@@ -13,4 +13,5 @@ struct MasterdataDataDTO: Decodable {
 struct MasterdataAtttributesDTO: Decodable {
 
     let cryptocoins: [CryptocoinDTO]
+    let commodities: [CommodityDTO]
 }

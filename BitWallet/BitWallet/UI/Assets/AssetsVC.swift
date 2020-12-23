@@ -45,6 +45,14 @@ class AssetsVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        guard Theme.current != previousTraitCollection?.theme else { return }
+
+        reloadTableView()
+    }
+
     @objc private func onTitleSegmentedControlValueChanged() {
         reloadTableView()
     }
@@ -201,6 +209,12 @@ extension AssetsVC: UITableViewDataSource {
 
             imageService.fetch(asset.logo?.url, for: cell.imageTarget,  placeholder: #imageLiteral(resourceName: "camera"))
 
+        case let asset as Commodity:
+            cell.name = asset.name
+            cell.price = asset.averagePrice
+
+            imageService.fetch(asset.logo?.url, for: cell.imageTarget,  placeholder: #imageLiteral(resourceName: "camera"))
+
         default: break
         }
     }
@@ -240,7 +254,7 @@ private enum Segment: Int, CustomStringConvertible, CaseIterable {
     var numberOfSections: Int {
         switch self {
         case .all:
-            return Segment.allCases.count
+            return 3
 
         case .cryptocoins, .metals, .fiats:
             return 1
@@ -253,7 +267,7 @@ private enum Segment: Int, CustomStringConvertible, CaseIterable {
             return assets.cryptocoins.count
 
         case (.all, 1), (.metals, 0):
-            return 0
+            return assets.commodities.count
 
         case (.all, 2), (.fiats, 0):
             return 0
@@ -269,7 +283,7 @@ private enum Segment: Int, CustomStringConvertible, CaseIterable {
             return assets.cryptocoins[safe: indexPath.row]
 
         case (.all, 1), (.metals, 0):
-            return nil
+            return assets.commodities[safe: indexPath.row]
 
         case (.all, 2), (.fiats, 0):
             return nil

@@ -15,3 +15,17 @@ struct ImageModel {
         }
     }
 }
+
+extension ImageModel {
+
+    init?(lightImagePath: String?, darkImagePath: String?) {
+        if
+            let lightLogoURL = lightImagePath.flatMap(URL.init),
+            let darkLogoURL = darkImagePath.flatMap(URL.init)
+        {
+            self.init(lightImageURL: lightLogoURL, darkImageURL: darkLogoURL)
+        } else {
+            return nil
+        }
+    }
+}

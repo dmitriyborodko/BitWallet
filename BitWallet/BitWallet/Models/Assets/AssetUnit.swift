@@ -8,6 +8,6 @@ protocol AssetUnit {
 enum AssetType: CaseIterable {
 
     case cryptocoin
-//    case commodity
+    case commodity
 //    case fiat
 }
