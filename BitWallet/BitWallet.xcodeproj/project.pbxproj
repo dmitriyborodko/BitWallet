@@ -17,6 +17,7 @@
 		0B1C96122592455600FC3518 /* Collection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C96112592455600FC3518 /* Collection+Extensions.swift */; };
 		0B1C96302592876600FC3518 /* ImageTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C962F2592876600FC3518 /* ImageTarget.swift */; };
 		0B1C965225929AE000FC3518 /* AssetHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C965125929AE000FC3518 /* AssetHeaderView.swift */; };
+		0B1C96612593528400FC3518 /* PriceFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C96602593528400FC3518 /* PriceFormatter.swift */; };
 		0B5B43DC2591304B00DBAFD7 /* MasterdataDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5B43DB2591304B00DBAFD7 /* MasterdataDTO.swift */; };
 		0B5B43E42591324C00DBAFD7 /* CryptocoinDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5B43E32591324C00DBAFD7 /* CryptocoinDTO.swift */; };
 		0B5B43EA259135F000DBAFD7 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5B43E9259135F000DBAFD7 /* ImageModel.swift */; };
@@ -69,6 +70,7 @@
 		0B1C96112592455600FC3518 /* Collection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extensions.swift"; sourceTree = "<group>"; };
 		0B1C962F2592876600FC3518 /* ImageTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTarget.swift; sourceTree = "<group>"; };
 		0B1C965125929AE000FC3518 /* AssetHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetHeaderView.swift; sourceTree = "<group>"; };
+		0B1C96602593528400FC3518 /* PriceFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceFormatter.swift; sourceTree = "<group>"; };
 		0B5B43DB2591304B00DBAFD7 /* MasterdataDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterdataDTO.swift; sourceTree = "<group>"; };
 		0B5B43E32591324C00DBAFD7 /* CryptocoinDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptocoinDTO.swift; sourceTree = "<group>"; };
 		0B5B43E9259135F000DBAFD7 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 				0B1C95F52592288700FC3518 /* Reusable.swift */,
 				0B1C96112592455600FC3518 /* Collection+Extensions.swift */,
 				0B1C962F2592876600FC3518 /* ImageTarget.swift */,
+				0B1C96602593528400FC3518 /* PriceFormatter.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -502,6 +505,7 @@
 				0B1C95E925920DD000FC3518 /* Assets.swift in Sources */,
 				0BA8B26A258B61E100CAB670 /* SceneDelegate.swift in Sources */,
 				0B5B440A259141C700DBAFD7 /* Cryptocoin.swift in Sources */,
+				0B1C96612593528400FC3518 /* PriceFormatter.swift in Sources */,
 				0B5B43EA259135F000DBAFD7 /* ImageModel.swift in Sources */,
 				0B1C95E42592080400FC3518 /* AssetUnit.swift in Sources */,
 				0B1C960325922A7F00FC3518 /* LoadingCell.swift in Sources */,

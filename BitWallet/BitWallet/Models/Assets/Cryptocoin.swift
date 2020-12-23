@@ -6,9 +6,8 @@ struct Cryptocoin: AssetUnit {
 
     let symbol: String
     let name: String
-    let averagePrice: String
+    let averagePrice: String?
     let logo: ImageModel?
-    let fiatPricePrecision: Int?
 }
 
 extension Cryptocoin {
@@ -16,7 +15,11 @@ extension Cryptocoin {
     init(withDTO dto: CryptocoinDTO) {
         self.symbol = dto.attributes.symbol
         self.name = dto.attributes.name
-        self.averagePrice = dto.attributes.averagePrice
+
+        self.averagePrice = PriceFormatter.format(
+            price: dto.attributes.averagePrice,
+            precision: dto.attributes.fiatPricePrecision
+        )
 
         if
             let lightLogoURL = dto.attributes.lightLogo.flatMap(URL.init),
@@ -26,7 +29,5 @@ extension Cryptocoin {
         } else {
             self.logo = nil
         }
-
-        self.fiatPricePrecision = dto.attributes.fiatPricePrecision
     }
 }
