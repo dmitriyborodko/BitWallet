@@ -17,7 +17,7 @@ extension CryptocoinWallet {
         self.balance = PriceFormatter.format(
             price: dto.attributes.balance,
             precision: cryptocoinAttributesDTO?.precisionForCoins,
-            currencySymbol: cryptocoinSymbol
+            currencySymbol: cryptocoinAttributesDTO?.precisionForCoins
         )
 
         self.icon = ImageModel(

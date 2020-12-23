@@ -3,7 +3,7 @@ import PromiseKit
 
 protocol WalletsService {
 
-    func fetchWallets() -> Promise<Wallets>
+    func fetchWallets() -> Promise<WalletGroups>
 }
 
 class DefaultWalletsService: WalletsService {
@@ -14,10 +14,10 @@ class DefaultWalletsService: WalletsService {
         self.masterdataService = masterdataService
     }
 
-    func fetchWallets() -> Promise<Wallets> {
+    func fetchWallets() -> Promise<WalletGroups> {
         if let walletsPromise = walletsPromise { return walletsPromise }
 
-        let promise: Promise<Wallets> = firstly {
+        let promise: Promise<WalletGroups> = firstly {
             masterdataService.fetchMasterdata()
         }.map { [unowned self] masterdata in
             walletsPromise = nil
@@ -32,5 +32,5 @@ class DefaultWalletsService: WalletsService {
     // MARK: - Implementation
 
     private let masterdataService: MasterdataService
-    private var walletsPromise: Promise<Wallets>?
+    private var walletsPromise: Promise<WalletGroups>?
 }

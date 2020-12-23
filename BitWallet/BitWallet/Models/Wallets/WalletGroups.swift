@@ -1,13 +1,13 @@
 import Foundation
 
-struct Wallets {
+struct WalletGroups {
 
     let cryptocoinWallets: [CryptocoinWallet]
 //    let commodities: [Commodity]
 //    let fiats: [Fiat]
 }
 
-extension Wallets {
+extension WalletGroups {
 
     init(withDTO dto: MasterdataAtttributesDTO) {
         self.cryptocoinWallets = dto.cryptocoinWallets

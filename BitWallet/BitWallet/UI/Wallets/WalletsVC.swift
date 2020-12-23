@@ -15,7 +15,7 @@ class WalletsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        loadWallets()
+        loadWalletGroups()
     }
 
     // MARK: - Implementation
@@ -80,13 +80,13 @@ class WalletsVC: UIViewController {
         )
     }
 
-    private func loadWallets() {
+    private func loadWalletGroups() {
         applyLoadingState()
 
         firstly {
             walletsService.fetchWallets()
-        }.done { [weak self] wallets in
-            self?.apply(wallets: wallets)
+        }.done { [weak self] walletGroups in
+            self?.apply(walletGroups: walletGroups)
         }.catch { [weak self] error in
             self?.apply(error: error)
         }
@@ -96,8 +96,8 @@ class WalletsVC: UIViewController {
 
     }
 
-    private func apply(wallets: Wallets) {
-        state = .presenting(wallets: wallets)
+    private func apply(walletGroups: WalletGroups) {
+        state = .presenting(walletGroups: walletGroups)
     }
 
     private func apply(error: Error) {
@@ -297,11 +297,11 @@ private enum Segment: Int, CustomStringConvertible, CaseIterable {
 private enum State {
 
     case loading
-    case presenting(wallets: Wallets)
+    case presenting(walletGroups: WalletGroups)
     case error(description: String)
 }
 
-private extension Wallets {
+private extension WalletGroups {
 
     var count: Int { 3 }
 
