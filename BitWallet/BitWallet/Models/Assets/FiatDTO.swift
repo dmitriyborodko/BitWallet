@@ -14,6 +14,7 @@ struct FiatAtttributesDTO: Decodable {
         case lightLogo = "logo"
         case darkLogo = "logo_dark"
         case hasWallets = "has_wallets"
+        case precision = "precision"
     }
 
     let symbol: String
@@ -24,4 +25,5 @@ struct FiatAtttributesDTO: Decodable {
     let lightLogo: String?
     let darkLogo: String?
     let hasWallets: Bool
+    let precision: Int
 }

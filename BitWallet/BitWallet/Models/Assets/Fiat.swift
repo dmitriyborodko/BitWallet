@@ -7,6 +7,7 @@ struct Fiat: AssetUnit {
     let symbol: String
     let name: String
     let logo: ImageModel?
+    let precision: Int
 }
 
 extension Fiat {
@@ -19,5 +20,7 @@ extension Fiat {
             lightImagePath: dto.attributes.lightLogo,
             darkImagePath: dto.attributes.darkLogo
         )
+
+        self.precision = dto.attributes.precision
     }
 }

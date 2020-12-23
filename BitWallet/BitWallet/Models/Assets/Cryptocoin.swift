@@ -18,7 +18,7 @@ extension Cryptocoin {
 
         self.averagePrice = PriceFormatter.format(
             price: dto.attributes.averagePrice,
-            precision: dto.attributes.fiatPricePrecision
+            precision: dto.attributes.precisionForFiatPrice
         )
 
         self.logo = ImageModel(

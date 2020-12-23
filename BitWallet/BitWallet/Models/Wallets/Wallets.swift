@@ -2,7 +2,7 @@ import Foundation
 
 struct Wallets {
 
-    let cryptocoinWallet: [CryptocoinWallet]
+    let cryptocoinWallets: [CryptocoinWallet]
 //    let commodities: [Commodity]
 //    let fiats: [Fiat]
 }
@@ -10,11 +10,13 @@ struct Wallets {
 extension Wallets {
 
     init(withDTO dto: MasterdataAtttributesDTO) {
-        self.cryptocoinWallet = dto.cryptocoinWallets
+        self.cryptocoinWallets = dto.cryptocoinWallets
             .map { walletDTO in
                 CryptocoinWallet(
                     withDTO: walletDTO,
-                    cryptocoinAttributesDTO: dto.cryptocoins.first { $0.id == walletDTO.cryptocoinID }?.attributes
+                    cryptocoinAttributesDTO: dto.cryptocoins
+                        .first { $0.id == walletDTO.attributes.cryptocoinID }?
+                        .attributes
                 )
             }
 

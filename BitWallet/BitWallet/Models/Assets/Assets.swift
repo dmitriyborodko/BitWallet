@@ -2,6 +2,8 @@ import Foundation
 
 struct Assets {
 
+    let groupsCount: Int = 3
+
     let cryptocoins: [Cryptocoin]
     let commodities: [Commodity]
     let fiats: [Fiat]

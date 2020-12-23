@@ -1,15 +1,20 @@
 import UIKit
 
-class AssetCell: UITableViewCell, Reusable {
+class WalletCell: UITableViewCell, Reusable {
 
     var name: String? {
         get { nameLabel.text }
         set { nameLabel.text = newValue }
     }
 
-    var price: String? {
-        get { priceLabel.text }
-        set { priceLabel.text = newValue }
+    var symbol: String? {
+        get { symbolLabel.text }
+        set { symbolLabel.text = newValue }
+    }
+
+    var balance: String? {
+        get { balanceLabel.text }
+        set { balanceLabel.text = newValue }
     }
 
     var imageTarget: ImageTarget { ImageTarget(imageView: iconImageView, size: Constants.iconImageViewSize) }
@@ -17,7 +22,8 @@ class AssetCell: UITableViewCell, Reusable {
     private lazy var overlayView: UIView = .init()
     private lazy var iconImageView: UIImageView = .init()
     private lazy var nameLabel: UILabel = .init()
-    private lazy var priceLabel: UILabel = .init()
+    private lazy var symbolLabel: UILabel = .init()
+    private lazy var balanceLabel: UILabel = .init()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -27,7 +33,8 @@ class AssetCell: UITableViewCell, Reusable {
         configureOverlayView()
         configureIconImageView()
         configureNameLabel()
-        configurePriceLabel()
+        configureSymbolLabel()
+        configureBalanceLabel()
     }
 
     @available(*, unavailable)
@@ -39,7 +46,8 @@ class AssetCell: UITableViewCell, Reusable {
         super.prepareForReuse()
 
         name = nil
-        price = nil
+        symbol = nil
+        balance = nil
     }
 
     private func configureOverlayView() {
@@ -64,16 +72,27 @@ class AssetCell: UITableViewCell, Reusable {
     private func configureNameLabel() {
         overlayView.addSubview(nameLabel)
         nameLabel.snp.makeConstraints { make in
-            make.left.equalTo(iconImageView.snp.right).offset(Constants.nameLabelLeftOffset)
+            make.left.equalTo(iconImageView.snp.right).offset(Constants.iconImageViewRightOffset)
+            make.right.equalToSuperview().inset(Constants.contentRightInset)
             make.centerY.equalTo(iconImageView.snp.centerY).offset(-Constants.iconImageViewSize.height / 4)
         }
     }
 
-    private func configurePriceLabel() {
-        overlayView.addSubview(priceLabel)
-        priceLabel.snp.makeConstraints { make in
-            make.left.equalTo(iconImageView.snp.right).offset(Constants.nameLabelLeftOffset)
+    private func configureSymbolLabel() {
+        overlayView.addSubview(symbolLabel)
+        symbolLabel.snp.makeConstraints { make in
+            make.left.equalTo(iconImageView.snp.right).offset(Constants.iconImageViewRightOffset)
             make.centerY.equalTo(iconImageView.snp.centerY).offset(Constants.iconImageViewSize.height / 4)
+        }
+    }
+
+    private func configureBalanceLabel() {
+        balanceLabel.textAlignment = .right
+        overlayView.addSubview(balanceLabel)
+        balanceLabel.snp.makeConstraints { make in
+            make.left.equalTo(symbolLabel.snp.right).offset(Constants.balanceLeftOffset)
+            make.right.equalToSuperview().inset(Constants.contentRightInset)
+            make.centerY.equalTo(symbolLabel)
         }
     }
 }
@@ -83,9 +102,13 @@ private enum Constants {
     static let overlayViewCornerRadius: CGFloat = 16.0
     static let overlayViewEdgeInsets: UIEdgeInsets = .init(top: 0.0, left: 8.0, bottom: 8.0, right: 8.0)
 
-    static let iconImageViewLeftTopBottomInset: CGFloat = 8.0
-    static let iconImageViewSize = CGSize(width: 36.0, height: 36.0)
+    static let contentRightInset: CGFloat = 8.0
 
-    static let nameLabelLeftOffset: CGFloat = 8.0
+    static let iconImageViewLeftTopBottomInset: CGFloat = 8.0
+    static let iconImageViewSize = CGSize(width: 42.0, height: 42.0)
+    static let iconImageViewRightOffset: CGFloat = 8.0
+
     static let nameToPriceLabelsSpacing: CGFloat = 4.0
+
+    static let balanceLeftOffset: CGFloat = 8.0
 }

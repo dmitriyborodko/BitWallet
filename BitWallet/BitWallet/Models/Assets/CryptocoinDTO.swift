@@ -14,7 +14,8 @@ struct CryptocoinAttributesDTO: Decodable {
         case averagePrice = "avg_price"
         case lightLogo = "logo"
         case darkLogo = "logo_dark"
-        case fiatPricePrecision = "precision_for_fiat_price"
+        case precisionForFiatPrice = "precision_for_fiat_price"
+        case precisionForCoins = "precision_for_coins"
     }
 
     let symbol: String
@@ -26,5 +27,6 @@ struct CryptocoinAttributesDTO: Decodable {
     let lightLogo: String?
     let darkLogo: String?
 
-    let fiatPricePrecision: Int
+    let precisionForFiatPrice: Int
+    let precisionForCoins: Int
 }
