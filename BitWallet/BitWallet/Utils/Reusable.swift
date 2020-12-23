@@ -19,8 +19,16 @@ extension UITableView {
             return cell
         } else {
             register(T.self, forCellReuseIdentifier: reuseIdentifier)
-
             return dequeueReusableCell(withIdentifier: reuseIdentifier) as! T
+        }
+    }
+
+    func registerAndDequeueReusableHeaderFooterView<T>() -> T where T: UITableViewHeaderFooterView & Reusable {
+        if let headerFooter = dequeueReusableHeaderFooterView(withIdentifier: T.reuseIdentifier) as? T {
+            return headerFooter
+        } else {
+            register(T.self, forHeaderFooterViewReuseIdentifier: T.reuseIdentifier)
+            return dequeueReusableHeaderFooterView(withIdentifier: T.reuseIdentifier) as! T
         }
     }
 }

@@ -24,7 +24,7 @@ class AssetsVC: UIViewController {
     private lazy var tableView: UITableView = .init()
 
     private var state: State = .loading {
-        didSet { tableView.reloadData() }
+        didSet { reloadTableView() }
     }
     private var selectedSegment: Segment { Segment(rawValue: titleSegmentedControl.selectedSegmentIndex) ?? .all }
 
@@ -45,6 +45,10 @@ class AssetsVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    @objc private func onTitleSegmentedControlValueChanged() {
+        reloadTableView()
+    }
+
     private func configureUI() {
         view.backgroundColor = .systemTeal
         navigationItem.titleView = titleSegmentedControl
@@ -61,6 +65,12 @@ class AssetsVC: UIViewController {
 
         segmentedControl.selectedSegmentIndex = Segment.all.rawValue
 
+        segmentedControl.addTarget(
+            self,
+            action: #selector(onTitleSegmentedControlValueChanged),
+            for: .valueChanged
+        )
+
         return segmentedControl
     }
 
@@ -68,11 +78,22 @@ class AssetsVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = .clear
+        tableView.allowsSelection = false
+        tableView.separatorStyle = .none
 
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(self.view.safeAreaInsets)
         }
+    }
+
+    private func reloadTableView() {
+        UIView.transition(
+            with: tableView,
+            duration: 0.2,
+            options: [.transitionCrossDissolve, .curveEaseInOut],
+            animations: { self.tableView.reloadData() }
+        )
     }
 
     private func loadAssets() {
@@ -157,6 +178,18 @@ extension AssetsVC: UITableViewDataSource {
             let cell = tableView.registerAndDequeueReusableCell() as ErrorCell
             cell.title = error
             return cell
+        }
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        switch state {
+        case .loading, .error:
+            return nil
+
+        case .presenting:
+            let header = tableView.registerAndDequeueReusableHeaderFooterView() as AssetHeaderView
+            header.title = selectedSegment.headerTitle(forSection: section)
+            return header
         }
     }
 
@@ -245,6 +278,22 @@ private enum Segment: Int, CustomStringConvertible, CaseIterable {
             return nil
         }
     }
+
+    func headerTitle(forSection section: Int) -> String? {
+        switch (self, section) {
+        case (.all, 0), (.cryptocoins, 0):
+            return "Cryptocoins"
+
+        case (.all, 1), (.metals, 0):
+            return "Metals"
+
+        case (.all, 2), (.fiats, 0):
+            return "Fiats"
+
+        default:
+            return nil
+        }
+    }
 }
 
 private enum State {
@@ -252,4 +301,9 @@ private enum State {
     case loading
     case presenting(assets: Assets)
     case error(description: String)
+}
+
+private enum Constants {
+
+    static let animationDuration: TimeInterval = 0.2
 }

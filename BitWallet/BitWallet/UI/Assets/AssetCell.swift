@@ -74,10 +74,10 @@ class AssetCell: UITableViewCell, Reusable {
 private enum Constants {
 
     static var overlayViewCornerRadius: CGFloat = 16.0
-    static var overlayViewEdgeInsets: UIEdgeInsets = .init(top: 8.0, left: 8.0, bottom: 8.0, right: 8.0)
+    static var overlayViewEdgeInsets: UIEdgeInsets = .init(top: 0.0, left: 8.0, bottom: 8.0, right: 8.0)
 
     static var iconImageViewLeftTopBottomInset: CGFloat = 8.0
-    static var iconImageViewSize = CGSize(width: 50, height: 50)
+    static var iconImageViewSize = CGSize(width: 36.0, height: 36.0)
 
     static var nameLabelLeftOffset: CGFloat = 8.0
     static var nameToPriceLabelsSpacing: CGFloat = 4.0
