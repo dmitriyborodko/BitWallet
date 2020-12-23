@@ -6,18 +6,21 @@ struct PriceFormatter {
         let currencyFormatter = NumberFormatter()
         currencyFormatter.usesGroupingSeparator = true
         currencyFormatter.numberStyle = .currency
-        currencyFormatter.currencySymbol = "€"
         return currencyFormatter
     }()
 
-    static func format(price priceString: String, precision: Int?) -> String? {
-        guard let price = Double(priceString) else { return nil }
+    static func format(price priceString: String, precision: Int?, currencySymbol: String? = "€") -> String? {
+        return Double(priceString).flatMap { format(price: $0, precision: precision, currencySymbol: currencySymbol) }
+    }
 
-        let precision = precision ?? 2
-
+    static func format(price: Double, precision: Int?, currencySymbol: String? = "€") -> String? {
         currencyFormatter.locale = Locale.current
-        currencyFormatter.minimumFractionDigits = precision
-        currencyFormatter.maximumFractionDigits = precision
+        currencyFormatter.currencySymbol = currencySymbol
+
+        if let precision = precision {
+            currencyFormatter.minimumFractionDigits = precision
+            currencyFormatter.maximumFractionDigits = precision
+        }
 
         return currencyFormatter.string(from: NSNumber(value: price))
     }

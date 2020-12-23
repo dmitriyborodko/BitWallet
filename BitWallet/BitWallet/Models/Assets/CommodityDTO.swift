@@ -2,6 +2,7 @@ import Foundation
 
 struct CommodityDTO: Decodable {
 
+    let id: String
     let attributes: CommodityAtttributesDTO
 }
 

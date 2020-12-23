@@ -2,10 +2,11 @@ import Foundation
 
 struct CryptocoinDTO: Decodable {
 
-    let attributes: CryptocoinAtttributesDTO
+    let id: String
+    let attributes: CryptocoinAttributesDTO
 }
 
-struct CryptocoinAtttributesDTO: Decodable {
+struct CryptocoinAttributesDTO: Decodable {
 
     private enum CodingKeys: String, CodingKey {
         case symbol

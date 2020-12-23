@@ -10,4 +10,5 @@ enum Services {
     static let masterdataService: MasterdataService = DefaultMasterdataService()
 
     static let assetsService: AssetsService = DefaultAssetsService()
+    static let walletsService: WalletsService = DefaultWalletsService()
 }
