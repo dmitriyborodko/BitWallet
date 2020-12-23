@@ -18,7 +18,9 @@ extension WalletGroups {
                         .first { $0.id == walletDTO.attributes.cryptocoinID }?
                         .attributes
                 )
-            }.sorted(by: { PriceFormatter.comparePrices(left: $0.balance, right: $1.balance) })
+            }
+            .filter { $0.isDeleted }
+            .sorted(by: { PriceFormatter.comparePrices(left: $0.balance, right: $1.balance) })
 
         self.commodityWallets = dto.commodityWallets
             .map { walletDTO in
@@ -28,7 +30,9 @@ extension WalletGroups {
                         .first { $0.id == walletDTO.attributes.cryptocoinID }?
                         .attributes
                 )
-            }.sorted(by: { PriceFormatter.comparePrices(left: $0.balance, right: $1.balance) })
+            }
+            .filter { $0.isDeleted }
+            .sorted(by: { PriceFormatter.comparePrices(left: $0.balance, right: $1.balance) })
 
         self.fiatWallets = dto.fiatWallets
             .map { walletDTO in
@@ -38,6 +42,7 @@ extension WalletGroups {
                         .first { $0.id == walletDTO.attributes.fiatID }?
                         .attributes
                 )
-            }.sorted(by: { PriceFormatter.comparePrices(left: $0.balance, right: $1.balance) })
+            }
+            .sorted(by: { PriceFormatter.comparePrices(left: $0.balance, right: $1.balance) })
     }
 }

@@ -13,10 +13,12 @@ struct CryptocoinWalletAttributesDTO: Decodable {
         case cryptocoinSymbol = "cryptocoin_symbol"
         case balance
         case cryptocoinID = "cryptocoin_id"
+        case isDeleted = "deleted"
     }
 
     let name: String
     let cryptocoinSymbol: String
     let balance: String
     let cryptocoinID: String
+    let isDeleted: Bool
 }
