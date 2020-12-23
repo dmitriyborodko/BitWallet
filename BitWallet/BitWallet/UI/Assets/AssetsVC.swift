@@ -215,6 +215,11 @@ extension AssetsVC: UITableViewDataSource {
 
             imageService.fetch(asset.logo?.url, for: cell.imageTarget,  placeholder: #imageLiteral(resourceName: "camera"))
 
+        case let asset as Fiat:
+            cell.name = asset.name
+
+            imageService.fetch(asset.logo?.url, for: cell.imageTarget,  placeholder: #imageLiteral(resourceName: "camera"))
+
         default: break
         }
     }
@@ -270,7 +275,7 @@ private enum Segment: Int, CustomStringConvertible, CaseIterable {
             return assets.commodities.count
 
         case (.all, 2), (.fiats, 0):
-            return 0
+            return assets.fiats.count
 
         default:
             return 0
@@ -286,7 +291,7 @@ private enum Segment: Int, CustomStringConvertible, CaseIterable {
             return assets.commodities[safe: indexPath.row]
 
         case (.all, 2), (.fiats, 0):
-            return nil
+            return assets.fiats[safe: indexPath.row]
 
         default:
             return nil

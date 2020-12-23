@@ -19,8 +19,8 @@ class Coordinator {
     private let walletsVC = WalletsVC()
 
     private func configureUI() {
-        assetsNavigationController.tabBarItem = UITabBarItem(title: "Assets", image: nil, tag: Constants.assetsVCTag)
-        walletsNavigationController.tabBarItem = UITabBarItem(title: "Wallets", image: nil, tag: Constants.walletsVCTag)
+        assetsNavigationController.tabBarItem = UITabBarItem(title: "Assets", image: #imageLiteral(resourceName: "dolar"), tag: Constants.assetsVCTag)
+        walletsNavigationController.tabBarItem = UITabBarItem(title: "Wallets", image: #imageLiteral(resourceName: "card"), tag: Constants.walletsVCTag)
 
         assetsNavigationController.setViewControllers([assetsVC], animated: false)
         walletsNavigationController.setViewControllers([walletsVC], animated: false)

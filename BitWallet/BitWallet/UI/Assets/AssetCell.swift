@@ -35,6 +35,13 @@ class AssetCell: UITableViewCell, Reusable {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        name = nil
+        price = nil
+    }
+
     private func configureOverlayView() {
         overlayView.backgroundColor = .lightGray
         overlayView.layer.cornerCurve = .continuous

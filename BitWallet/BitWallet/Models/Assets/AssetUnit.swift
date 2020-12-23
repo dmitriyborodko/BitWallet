@@ -9,5 +9,5 @@ enum AssetType: CaseIterable {
 
     case cryptocoin
     case commodity
-//    case fiat
+    case fiat
 }
