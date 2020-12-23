@@ -4,7 +4,7 @@ struct WalletGroups {
 
     let cryptocoinWallets: [CryptocoinWallet]
     let commodityWallets: [CommodityWallet]
-//    let fiats: [Fiat]
+    let fiatWallets: [FiatWallet]
 }
 
 extension WalletGroups {
@@ -30,6 +30,14 @@ extension WalletGroups {
                 )
             }
 
-//        self.fiats = dto.fiats.map(Fiat.init)
+        self.fiatWallets = dto.fiatWallets
+            .map { walletDTO in
+                FiatWallet(
+                    withDTO: walletDTO,
+                    fiatAttributesDTO: dto.fiats
+                        .first { $0.id == walletDTO.attributes.fiatID }?
+                        .attributes
+                )
+            }
     }
 }

@@ -182,13 +182,16 @@ extension WalletsVC: UITableViewDataSource {
             cell.balance = wallet.balance
 
             imageService.fetch(wallet.icon?.url, for: cell.imageTarget, placeholder: #imageLiteral(resourceName: "camera"))
-//
-//        case let asset as Fiat:
-//            cell.name = asset.name
-//
-//            imageService.fetch(asset.logo?.url, for: cell.imageTarget,  placeholder: #imageLiteral(resourceName: "camera"))
 
-        default: break
+        case let wallet as FiatWallet:
+            cell.name = wallet.name
+            cell.symbol = wallet.fiatSymbol
+            cell.balance = wallet.balance
+
+            imageService.fetch(wallet.icon?.url, for: cell.imageTarget, placeholder: #imageLiteral(resourceName: "camera"))
+
+        default:
+            break
         }
     }
 }
@@ -229,6 +232,9 @@ private extension WalletGroups {
         case 1:
             return commodityWallets
 
+        case 2:
+            return fiatWallets
+
         default:
             return nil
         }
@@ -242,8 +248,11 @@ private extension WalletGroups {
         case 1:
             return "Commodity Wallets"
 
+        case 2:
+            return "Fiat Wallets"
+
         default:
-            return ""
+            return nil
         }
     }
 }

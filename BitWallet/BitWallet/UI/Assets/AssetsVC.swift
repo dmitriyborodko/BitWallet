@@ -208,7 +208,8 @@ extension AssetsVC: UITableViewDataSource {
 
             imageService.fetch(asset.logo?.url, for: cell.imageTarget,  placeholder: #imageLiteral(resourceName: "camera"))
 
-        default: break
+        default:
+            break
         }
     }
 }
