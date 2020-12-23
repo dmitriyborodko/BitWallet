@@ -17,10 +17,12 @@ struct MasterdataAtttributesDTO: Decodable {
         case commodities
         case fiats
         case cryptocoinWallets = "wallets"
+        case commodityWallets = "commodity_wallets"
     }
 
     let cryptocoins: [CryptocoinDTO]
     let commodities: [CommodityDTO]
     let fiats: [FiatDTO]
     let cryptocoinWallets: [CryptocoinWalletDTO]
+    let commodityWallets: [CommodityWalletDTO]
 }

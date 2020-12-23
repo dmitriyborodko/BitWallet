@@ -167,18 +167,6 @@ extension WalletsVC: UITableViewDataSource {
         }
     }
 
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        switch state {
-        case .loading, .error:
-            return nil
-
-        case .presenting(let walletGroups):
-            let header = tableView.registerAndDequeueReusableHeaderFooterView() as AssetHeaderView
-            header.title = walletGroups.headerTitle(forSection: section)
-            return header
-        }
-    }
-
     private func configureWalletCell(_ cell: WalletCell, with wallet: Wallet) {
         switch wallet {
         case let wallet as CryptocoinWallet:
@@ -188,11 +176,12 @@ extension WalletsVC: UITableViewDataSource {
 
             imageService.fetch(wallet.icon?.url, for: cell.imageTarget, placeholder: #imageLiteral(resourceName: "camera"))
 
-//        case let asset as Commodity:
-//            cell.name = asset.name
-//            cell.price = asset.averagePrice
-//
-//            imageService.fetch(asset.logo?.url, for: cell.imageTarget,  placeholder: #imageLiteral(resourceName: "camera"))
+        case let wallet as CommodityWallet:
+            cell.name = wallet.name
+            cell.symbol = wallet.cryptocoinSymbol
+            cell.balance = wallet.balance
+
+            imageService.fetch(wallet.icon?.url, for: cell.imageTarget, placeholder: #imageLiteral(resourceName: "camera"))
 //
 //        case let asset as Fiat:
 //            cell.name = asset.name
@@ -204,95 +193,22 @@ extension WalletsVC: UITableViewDataSource {
     }
 }
 
-// MARK: - UITableViewDataSource
-
 extension WalletsVC: UITableViewDelegate {
 
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        switch state {
+        case .loading, .error:
+            return nil
+
+        case .presenting(let walletGroups):
+            let header = tableView.registerAndDequeueReusableHeaderFooterView() as AssetHeaderView
+            header.title = walletGroups.headerTitle(forSection: section)
+            return header
+        }
+    }
 }
 
 // MARK: -
-
-private enum Segment: Int, CustomStringConvertible, CaseIterable {
-
-    case all = 0
-    case cryptocoins
-    case metals
-    case fiats
-
-    var description: String {
-        switch self {
-        case .all:
-            return "All"
-
-        case .cryptocoins:
-            return "Crypto"
-
-        case .metals:
-            return "Metals"
-
-        case .fiats:
-            return "Fiats"
-        }
-    }
-
-    var numberOfSections: Int {
-        switch self {
-        case .all:
-            return 3
-
-        case .cryptocoins, .metals, .fiats:
-            return 1
-        }
-    }
-
-    func numberOfAssets(inSection section: Int, assets: Assets) -> Int {
-        switch (self, section) {
-        case (.all, 0), (.cryptocoins, 0):
-            return assets.cryptocoins.count
-
-        case (.all, 1), (.metals, 0):
-            return assets.commodities.count
-
-        case (.all, 2), (.fiats, 0):
-            return assets.fiats.count
-
-        default:
-            return 0
-        }
-    }
-
-    func asset(with assets: Assets, indexPath: IndexPath) -> AssetUnit? {
-        switch (self, indexPath.section) {
-        case (.all, 0), (.cryptocoins, 0):
-            return assets.cryptocoins[safe: indexPath.row]
-
-        case (.all, 1), (.metals, 0):
-            return assets.commodities[safe: indexPath.row]
-
-        case (.all, 2), (.fiats, 0):
-            return assets.fiats[safe: indexPath.row]
-
-        default:
-            return nil
-        }
-    }
-
-    func headerTitle(forSection section: Int) -> String? {
-        switch (self, section) {
-        case (.all, 0), (.cryptocoins, 0):
-            return "Cryptocoins"
-
-        case (.all, 1), (.metals, 0):
-            return "Metals"
-
-        case (.all, 2), (.fiats, 0):
-            return "Fiats"
-
-        default:
-            return nil
-        }
-    }
-}
 
 private enum State {
 
@@ -310,6 +226,9 @@ private extension WalletGroups {
         case 0:
             return cryptocoinWallets
 
+        case 1:
+            return commodityWallets
+
         default:
             return nil
         }
@@ -319,6 +238,9 @@ private extension WalletGroups {
         switch section {
         case 0:
             return "Cryptocoin Wallets"
+
+        case 1:
+            return "Commodity Wallets"
 
         default:
             return ""

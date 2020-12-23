@@ -3,7 +3,7 @@ import Foundation
 struct WalletGroups {
 
     let cryptocoinWallets: [CryptocoinWallet]
-//    let commodities: [Commodity]
+    let commodityWallets: [CommodityWallet]
 //    let fiats: [Fiat]
 }
 
@@ -20,7 +20,16 @@ extension WalletGroups {
                 )
             }
 
-//        self.commodities = dto.commodities.map(Commodity.init)
+        self.commodityWallets = dto.commodityWallets
+            .map { walletDTO in
+                CommodityWallet(
+                    withDTO: walletDTO,
+                    commodityAttributesDTO: dto.commodities
+                        .first { $0.id == walletDTO.attributes.cryptocoinID }?
+                        .attributes
+                )
+            }
+
 //        self.fiats = dto.fiats.map(Fiat.init)
     }
 }

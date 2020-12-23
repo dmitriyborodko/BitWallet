@@ -189,18 +189,6 @@ extension AssetsVC: UITableViewDataSource {
         }
     }
 
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        switch state {
-        case .loading, .error:
-            return nil
-
-        case .presenting:
-            let header = tableView.registerAndDequeueReusableHeaderFooterView() as AssetHeaderView
-            header.title = selectedSegment.headerTitle(forSection: section)
-            return header
-        }
-    }
-
     private func configureAssetCell(_ cell: AssetCell, with asset: AssetUnit) {
         switch asset {
         case let asset as Cryptocoin:
@@ -229,6 +217,17 @@ extension AssetsVC: UITableViewDataSource {
 
 extension AssetsVC: UITableViewDelegate {
 
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        switch state {
+        case .loading, .error:
+            return nil
+
+        case .presenting:
+            let header = tableView.registerAndDequeueReusableHeaderFooterView() as AssetHeaderView
+            header.title = selectedSegment.headerTitle(forSection: section)
+            return header
+        }
+    }
 }
 
 // MARK: -

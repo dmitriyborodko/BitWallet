@@ -28,6 +28,8 @@
 		0B1C97902593CDAF00FC3518 /* WalletsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C978F2593CDAF00FC3518 /* WalletsService.swift */; };
 		0B1C97952593CDDA00FC3518 /* WalletGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C97942593CDDA00FC3518 /* WalletGroups.swift */; };
 		0B1C97B92593DD3300FC3518 /* WalletCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C97B82593DD3300FC3518 /* WalletCell.swift */; };
+		0B1C97EC2593E83E00FC3518 /* CommodityWalletDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C97EB2593E83E00FC3518 /* CommodityWalletDTO.swift */; };
+		0B1C97F12593E8D700FC3518 /* CommodityWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C97F02593E8D700FC3518 /* CommodityWallet.swift */; };
 		0B5B43DC2591304B00DBAFD7 /* MasterdataDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5B43DB2591304B00DBAFD7 /* MasterdataDTO.swift */; };
 		0B5B43E42591324C00DBAFD7 /* CryptocoinDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5B43E32591324C00DBAFD7 /* CryptocoinDTO.swift */; };
 		0B5B43EA259135F000DBAFD7 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5B43E9259135F000DBAFD7 /* ImageModel.swift */; };
@@ -91,6 +93,8 @@
 		0B1C978F2593CDAF00FC3518 /* WalletsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsService.swift; sourceTree = "<group>"; };
 		0B1C97942593CDDA00FC3518 /* WalletGroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletGroups.swift; sourceTree = "<group>"; };
 		0B1C97B82593DD3300FC3518 /* WalletCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCell.swift; sourceTree = "<group>"; };
+		0B1C97EB2593E83E00FC3518 /* CommodityWalletDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommodityWalletDTO.swift; sourceTree = "<group>"; };
+		0B1C97F02593E8D700FC3518 /* CommodityWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommodityWallet.swift; sourceTree = "<group>"; };
 		0B5B43DB2591304B00DBAFD7 /* MasterdataDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterdataDTO.swift; sourceTree = "<group>"; };
 		0B5B43E32591324C00DBAFD7 /* CryptocoinDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptocoinDTO.swift; sourceTree = "<group>"; };
 		0B5B43E9259135F000DBAFD7 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
@@ -199,6 +203,8 @@
 		0B1C97D52593E62900FC3518 /* Commodity */ = {
 			isa = PBXGroup;
 			children = (
+				0B1C97EB2593E83E00FC3518 /* CommodityWalletDTO.swift */,
+				0B1C97F02593E8D700FC3518 /* CommodityWallet.swift */,
 			);
 			path = Commodity;
 			sourceTree = "<group>";
@@ -589,6 +595,7 @@
 				0BA8B26A258B61E100CAB670 /* SceneDelegate.swift in Sources */,
 				0B5B440A259141C700DBAFD7 /* Cryptocoin.swift in Sources */,
 				0B1C96612593528400FC3518 /* PriceFormatter.swift in Sources */,
+				0B1C97F12593E8D700FC3518 /* CommodityWallet.swift in Sources */,
 				0B5B43EA259135F000DBAFD7 /* ImageModel.swift in Sources */,
 				0B1C95E42592080400FC3518 /* AssetUnit.swift in Sources */,
 				0B1C97542593783300FC3518 /* Commodity.swift in Sources */,
@@ -599,6 +606,7 @@
 				0B1C97592593787800FC3518 /* CommodityDTO.swift in Sources */,
 				0B1C97752593C37000FC3518 /* CryptocoinWalletDTO.swift in Sources */,
 				0BA8B2BA258B730A00CAB670 /* AssetsVC.swift in Sources */,
+				0B1C97EC2593E83E00FC3518 /* CommodityWalletDTO.swift in Sources */,
 				0B1C95F62592288700FC3518 /* Reusable.swift in Sources */,
 				0B1C97952593CDDA00FC3518 /* WalletGroups.swift in Sources */,
 				0BEB8D75258B81E5007BB460 /* Services.swift in Sources */,
