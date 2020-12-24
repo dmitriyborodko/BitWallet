@@ -49,7 +49,7 @@ class WalletsVC: UIViewController {
 
     private func configureUI() {
         view.backgroundColor = .systemBackground
-        navigationItem.title = "What a rich boy!"
+        navigationItem.title = "Wallets 💰"
 
         configureTableView()
     }

@@ -204,6 +204,8 @@ extension AssetsVC: UITableViewDataSource {
     }
 }
 
+// MARK: -
+
 private extension AssetGroups {
 
     static var count: Int { 3 }

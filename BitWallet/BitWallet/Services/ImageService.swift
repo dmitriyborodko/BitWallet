@@ -11,6 +11,7 @@ protocol ImageService {
 
 class DefaultImageService: ImageService {
 
+    /// Let's  assume that we use only .svg images ;-)
     func fetch(_ url: URL?, for target: ImageTarget, placeholder: UIImage) {
         target.imageView?.image = placeholder
 

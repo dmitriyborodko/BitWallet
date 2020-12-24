@@ -322,6 +322,7 @@
 				0BA8B2AE258B6D2F00CAB670 /* Assets */,
 				0BA8B2A5258B6BA800CAB670 /* Routing */,
 				0B1C960225922A7F00FC3518 /* LoadingCell.swift */,
+				0B1C965125929AE000FC3518 /* HeaderView.swift */,
 				0B1C960725922A8B00FC3518 /* ErrorCell.swift */,
 			);
 			path = UI;
@@ -373,7 +374,6 @@
 			children = (
 				0BA8B2BE258B731200CAB670 /* WalletsVC.swift */,
 				0B1C97B82593DD3300FC3518 /* WalletCell.swift */,
-				0B1C965125929AE000FC3518 /* HeaderView.swift */,
 			);
 			path = Wallets;
 			sourceTree = "<group>";

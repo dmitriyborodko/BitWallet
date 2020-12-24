@@ -30,5 +30,5 @@ class HeaderView: UITableViewHeaderFooterView, Reusable {
 
 private enum Constants {
 
-    static var titleLabelEdgeInsets: UIEdgeInsets = .init(top: 8.0, left: 16.0, bottom: 8.0, right: 16.0)
+    static var titleLabelEdgeInsets: UIEdgeInsets = .init(top: 8.0, left: 36.0, bottom: 8.0, right: 36.0)
 }
