@@ -14,8 +14,8 @@ struct PriceFormatter {
     }
 
     static func format(price: Double?, precision: Int?, currencySymbol: String? = "€") -> String? {
-        currencyFormatter.locale = Locale.current
         currencyFormatter.currencySymbol = currencySymbol
+        currencyFormatter.locale = Locale.current
 
         currencyFormatter.minimumFractionDigits = precision ?? 0
         currencyFormatter.maximumFractionDigits = precision ?? Int.max

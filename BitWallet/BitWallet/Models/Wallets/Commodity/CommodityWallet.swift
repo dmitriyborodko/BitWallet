@@ -8,7 +8,6 @@ struct CommodityWallet: Wallet {
     let cryptocoinSymbol: String
     let formattedBalance: String?
     let icon: ImageModel?
-    let isDeleted: Bool
     let isDefault: Bool
 
     let balance: Double?
@@ -16,7 +15,9 @@ struct CommodityWallet: Wallet {
 
 extension CommodityWallet {
 
-    init(withDTO dto: CommodityWalletDTO, commodityAttributesDTO: CommodityAtttributesDTO?) {
+    init?(withDTO dto: CommodityWalletDTO, commodityAttributesDTO: CommodityAtttributesDTO?) {
+        guard !dto.attributes.isDeleted else { return nil }
+
         self.name = dto.attributes.name
         self.cryptocoinSymbol = dto.attributes.cryptocoinSymbol
 
@@ -34,7 +35,6 @@ extension CommodityWallet {
             darkImagePath: commodityAttributesDTO?.darkLogo
         )
 
-        self.isDeleted = dto.attributes.isDeleted
         self.isDefault = dto.attributes.isDefault
     }
 }

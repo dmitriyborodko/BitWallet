@@ -65,14 +65,17 @@ class AssetCell: UITableViewCell, Reusable {
         overlayView.addSubview(nameLabel)
         nameLabel.snp.makeConstraints { make in
             make.left.equalTo(iconImageView.snp.right).offset(Constants.nameLabelLeftOffset)
+            make.right.equalToSuperview().inset(Constants.contentRightInset)
             make.centerY.equalTo(iconImageView.snp.centerY).offset(-Constants.iconImageViewSize.height / 4)
         }
     }
 
     private func configurePriceLabel() {
+        priceLabel.font = UIFont.systemFont(ofSize: 14.0)
         overlayView.addSubview(priceLabel)
         priceLabel.snp.makeConstraints { make in
             make.left.equalTo(iconImageView.snp.right).offset(Constants.nameLabelLeftOffset)
+            make.right.equalToSuperview().inset(Constants.contentRightInset)
             make.centerY.equalTo(iconImageView.snp.centerY).offset(Constants.iconImageViewSize.height / 4)
         }
     }
@@ -82,6 +85,8 @@ private enum Constants {
 
     static let overlayViewCornerRadius: CGFloat = 16.0
     static let overlayViewEdgeInsets: UIEdgeInsets = .init(top: 4.0, left: 0.0, bottom: 4.0, right: 0.0)
+
+    static let contentRightInset: CGFloat = 16.0
 
     static let iconImageViewLeftTopBottomInset: CGFloat = 8.0
     static let iconImageViewSize = CGSize(width: 36.0, height: 36.0)

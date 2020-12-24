@@ -2,6 +2,12 @@ import UIKit
 
 class WalletCell: UITableViewCell, Reusable {
 
+    enum Style {
+        case regular
+        case highlighted
+        case distinguished
+    }
+
     var name: String? {
         get { nameLabel.text }
         set { nameLabel.text = newValue }
@@ -15,11 +21,6 @@ class WalletCell: UITableViewCell, Reusable {
     var balance: String? {
         get { balanceLabel.text }
         set { balanceLabel.text = newValue }
-    }
-
-    var isDefault: Bool {
-        get { overlayView.backgroundColor == .lightGray }
-        set { overlayView.backgroundColor = newValue ? .systemGreen : .lightGray }
     }
 
     var imageTarget: ImageTarget { ImageTarget(imageView: iconImageView, size: Constants.iconImageViewSize) }
@@ -53,7 +54,20 @@ class WalletCell: UITableViewCell, Reusable {
         name = nil
         symbol = nil
         balance = nil
-        isDefault = false
+        set(style: .regular)
+    }
+
+    func set(style: Style) {
+        switch style {
+        case .regular:
+            overlayView.backgroundColor = .lightGray
+
+        case .highlighted:
+            overlayView.backgroundColor = .systemGreen
+
+        case .distinguished:
+            overlayView.backgroundColor = .systemTeal
+        }
     }
 
     private func configureOverlayView() {
@@ -85,6 +99,7 @@ class WalletCell: UITableViewCell, Reusable {
     }
 
     private func configureSymbolLabel() {
+        symbolLabel.font = UIFont.systemFont(ofSize: 14.0)
         overlayView.addSubview(symbolLabel)
         symbolLabel.snp.makeConstraints { make in
             make.left.equalTo(iconImageView.snp.right).offset(Constants.iconImageViewRightOffset)
@@ -93,6 +108,7 @@ class WalletCell: UITableViewCell, Reusable {
     }
 
     private func configureBalanceLabel() {
+        balanceLabel.font = UIFont.systemFont(ofSize: 14.0)
         balanceLabel.textAlignment = .right
         overlayView.addSubview(balanceLabel)
         balanceLabel.snp.makeConstraints { make in
@@ -108,7 +124,7 @@ private enum Constants {
     static let overlayViewCornerRadius: CGFloat = 16.0
     static let overlayViewEdgeInsets: UIEdgeInsets = .init(top: 4.0, left: 0.0, bottom: 4.0, right: 0.0)
 
-    static let contentRightInset: CGFloat = 8.0
+    static let contentRightInset: CGFloat = 16.0
 
     static let iconImageViewLeftTopBottomInset: CGFloat = 8.0
     static let iconImageViewSize = CGSize(width: 42.0, height: 42.0)

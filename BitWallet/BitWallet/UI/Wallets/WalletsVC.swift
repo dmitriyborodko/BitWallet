@@ -170,7 +170,7 @@ extension WalletsVC: UITableViewDataSource {
             cell.name = wallet.name
             cell.symbol = wallet.cryptocoinSymbol
             cell.balance = wallet.formattedBalance
-            cell.isDefault = wallet.isDefault
+            cell.set(style: wallet.isDefault ? .highlighted : .regular)
 
             imageService.fetch(wallet.icon?.url, for: cell.imageTarget, placeholder: #imageLiteral(resourceName: "camera"))
 
@@ -178,7 +178,7 @@ extension WalletsVC: UITableViewDataSource {
             cell.name = wallet.name
             cell.symbol = wallet.cryptocoinSymbol
             cell.balance = wallet.formattedBalance
-            cell.isDefault = wallet.isDefault
+            cell.set(style: wallet.isDefault ? .highlighted : .regular)
 
             imageService.fetch(wallet.icon?.url, for: cell.imageTarget, placeholder: #imageLiteral(resourceName: "camera"))
 
@@ -186,6 +186,7 @@ extension WalletsVC: UITableViewDataSource {
             cell.name = wallet.name
             cell.symbol = wallet.fiatSymbol
             cell.balance = wallet.formattedBalance
+            cell.set(style: .distinguished)
 
             imageService.fetch(wallet.icon?.url, for: cell.imageTarget, placeholder: #imageLiteral(resourceName: "camera"))
 
@@ -223,7 +224,7 @@ private enum State {
 
 private extension WalletGroups {
 
-    static var count: Int { 3 }
+    static var count: Int { WalletType.allCases.count }
 
     func wallets(for type: WalletType) -> [Wallet] {
         switch type {

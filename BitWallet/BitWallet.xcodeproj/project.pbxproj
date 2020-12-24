@@ -49,7 +49,6 @@
 		0BA8B2A7258B6C7600CAB670 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA8B2A6258B6C7600CAB670 /* Coordinator.swift */; };
 		0BA8B2BA258B730A00CAB670 /* AssetsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA8B2B9258B730A00CAB670 /* AssetsVC.swift */; };
 		0BA8B2BF258B731200CAB670 /* WalletsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA8B2BE258B731200CAB670 /* WalletsVC.swift */; };
-		0BEB8D5B258B7AD0007BB460 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEB8D5A258B7AD0007BB460 /* Colors.swift */; };
 		0BEB8D6D258B81DC007BB460 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEB8D6C258B81DC007BB460 /* ImageService.swift */; };
 		0BEB8D75258B81E5007BB460 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEB8D74258B81E5007BB460 /* Services.swift */; };
 		0BEB8D86258B82A5007BB460 /* MasterdataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEB8D85258B82A5007BB460 /* MasterdataService.swift */; };
@@ -122,7 +121,6 @@
 		0BA8B2A6258B6C7600CAB670 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		0BA8B2B9258B730A00CAB670 /* AssetsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsVC.swift; sourceTree = "<group>"; };
 		0BA8B2BE258B731200CAB670 /* WalletsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsVC.swift; sourceTree = "<group>"; };
-		0BEB8D5A258B7AD0007BB460 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		0BEB8D6C258B81DC007BB460 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		0BEB8D74258B81E5007BB460 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		0BEB8D85258B82A5007BB460 /* MasterdataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterdataService.swift; sourceTree = "<group>"; };
@@ -343,7 +341,6 @@
 		0BA8B2A4258B65F500CAB670 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				0BEB8D5A258B7AD0007BB460 /* Colors.swift */,
 				0B5B43F12591377100DBAFD7 /* Theme.swift */,
 				0B1C95F52592288700FC3518 /* Reusable.swift */,
 				0B1C96112592455600FC3518 /* Collection+Extensions.swift */,
@@ -598,7 +595,6 @@
 				0B1C96122592455600FC3518 /* Collection+Extensions.swift in Sources */,
 				0B5B43F725913AB500DBAFD7 /* MasterdataDataStore.swift in Sources */,
 				0B1C976725937D3000FC3518 /* FiatDTO.swift in Sources */,
-				0BEB8D5B258B7AD0007BB460 /* Colors.swift in Sources */,
 				0B1C976C25938A0800FC3518 /* Fiat.swift in Sources */,
 				0B1C97902593CDAF00FC3518 /* WalletsService.swift in Sources */,
 				0B5B43F22591377100DBAFD7 /* Theme.swift in Sources */,
